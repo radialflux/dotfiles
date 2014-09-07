@@ -43,7 +43,7 @@ Set zsh as your login shell:
 - Much more, and I am still adding
 
 [tmux](http://tmux.sourceforge.net) (http://www.vim.org/)
-- A goo crash course can be found [here](http://robots.thoughtbot.com/a-tmux-crash-course)
+- A good crash course can be found [here](http://robots.thoughtbot.com/a-tmux-crash-course)
 
 [git](#)(http://git-scm.com/) configuration:
 

@@ -37,17 +37,23 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+       else
+   export EDITOR='mvim'
+fi
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
+export LANG=en_US.UTF-8
+
+
+# Compilation flags
+export ARCHFLAGS="-arch x86_64"
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# ssh
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+
+alias zshconfig="mate ~/.zshrc"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
