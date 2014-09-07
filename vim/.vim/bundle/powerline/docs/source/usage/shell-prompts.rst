@@ -1,0 +1,1 @@
+/Users/Greg/.dotfiles/vim/bundle/powerline/docs/source/usage/shell-prompts.rst

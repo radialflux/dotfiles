@@ -1,0 +1,1 @@
+/Users/Greg/.dotfiles/vim/bundle/powerline/powerline/bindings/bash/powerline.sh

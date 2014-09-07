@@ -1,0 +1,1 @@
+/Users/Greg/.dotfiles/vim/bundle/vim-powerline/autoload/Powerline/Segments/ft_man.vim

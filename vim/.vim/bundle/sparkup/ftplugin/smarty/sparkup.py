@@ -1,0 +1,1 @@
+/Users/Greg/.dotfiles/vim/bundle/sparkup/ftplugin/smarty/sparkup.py

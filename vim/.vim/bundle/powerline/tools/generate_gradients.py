@@ -1,0 +1,1 @@
+/Users/Greg/.dotfiles/vim/bundle/powerline/tools/generate_gradients.py

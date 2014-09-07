@@ -1,0 +1,1 @@
+/Users/Greg/.dotfiles/vim/bundle/powerline/powerline/renderers/shell/__init__.py
