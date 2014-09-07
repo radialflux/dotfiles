@@ -1,1 +1,0 @@
-/Users/Greg/.dotfiles/vim/bundle/powerline/tests/path/vim.py

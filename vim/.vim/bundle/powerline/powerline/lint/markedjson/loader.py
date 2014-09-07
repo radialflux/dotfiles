@@ -1,1 +1,0 @@
-/Users/Greg/.dotfiles/vim/bundle/powerline/powerline/lint/markedjson/loader.py

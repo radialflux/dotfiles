@@ -1,1 +1,0 @@
-/Users/Greg/.dotfiles/vim/bundle/powerline/docs/source/develop/local-themes.rst

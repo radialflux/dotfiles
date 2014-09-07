@@ -1,1 +1,0 @@
-/Users/Greg/.dotfiles/vim/bundle/command-t/spec/command-t/scanner/file_scanner/ruby_file_scanner_spec.rb

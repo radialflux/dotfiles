@@ -1,1 +1,0 @@
-/Users/Greg/.dotfiles/vim/bundle/vim-powerline/autoload/Powerline/Functions/fugitive.vim

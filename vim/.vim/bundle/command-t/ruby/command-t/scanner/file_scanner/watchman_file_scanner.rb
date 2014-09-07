@@ -1,1 +1,0 @@
-/Users/Greg/.dotfiles/vim/bundle/command-t/ruby/command-t/scanner/file_scanner/watchman_file_scanner.rb

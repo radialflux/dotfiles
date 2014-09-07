@@ -1,1 +1,0 @@
-/Users/Greg/.dotfiles/vim/bundle/vim-sensible/plugin/sensible.vim

@@ -1,1 +1,0 @@
-/Users/Greg/.dotfiles/vim/bundle/vim-colors-solarized/autoload/togglebg.vim

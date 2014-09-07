@@ -1,1 +1,0 @@
-/Users/Greg/.dotfiles/vim/bundle/powerline/tools/colors_find.py

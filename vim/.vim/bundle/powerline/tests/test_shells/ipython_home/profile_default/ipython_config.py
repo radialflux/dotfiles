@@ -1,1 +1,0 @@
-/Users/Greg/.dotfiles/vim/bundle/powerline/tests/test_shells/ipython_home/profile_default/ipython_config.py

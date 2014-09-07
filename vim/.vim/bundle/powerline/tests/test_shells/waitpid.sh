@@ -1,1 +1,0 @@
-/Users/Greg/.dotfiles/vim/bundle/powerline/tests/test_shells/waitpid.sh

@@ -1,1 +1,0 @@
-/Users/Greg/.dotfiles/vim/bundle/sparkup/ftplugin/htmldjango/sparkup.vim

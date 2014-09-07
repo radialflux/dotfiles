@@ -1,1 +1,0 @@
-/Users/Greg/.dotfiles/vim/bundle/vim-powerline/autoload/Powerline/Themes/solarized16.vim

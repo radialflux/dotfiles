@@ -1,1 +1,0 @@
-/Users/Greg/.dotfiles/vim/bundle/command-t/multi-spec.sh

@@ -1,1 +1,0 @@
-/Users/Greg/.dotfiles/vim/bundle/vim-solarized-powerline/README.md

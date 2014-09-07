@@ -1,1 +1,0 @@
-/Users/Greg/.dotfiles/vim/bundle/powerline/docs/source/configuration/selectors.rst
