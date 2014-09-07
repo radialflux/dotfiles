@@ -4,3 +4,5 @@
 [user]
 	name = Greg Kellogg
 	email = greg@kelloggs.fm
+[push]
+	default = simple
