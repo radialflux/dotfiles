@@ -1,6 +1,5 @@
 set nocompatible     
 syntax enable
-filetype plugin indent off
 set backspace=indent,eol,start
 
 execute pathogen#infect()
@@ -23,8 +22,6 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-" Always display the status line
-set laststatus=2
 
 " \ is the leader character
 let mapleader = ","
@@ -39,20 +36,44 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'stephenmckinney/vim-solarized-powerline'
+" Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'bling/vim-airline'
+Bundle 'edkolev/promptline.vim'
 
 call vundle#end()
-filetype plugin indent on   
+
 
 set guifont=Anonymice\ Powerline:h16
 
-let g:solarized_termcolors=256
+" ------------------------------------------------------------------
+" Solarized Colorscheme Config
+" ------------------------------------------------------------------
+let g:solarized_termcolors=256    "default value is 16
+syntax enable
 set background=dark
 colorscheme solarized
-let g:Powerline_theme='short'
-let g:Powerline_colorscheme='solarized256_dark'
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+set noshowmode
 
+
+
+" ------------------------------------------------------------------
+" Powerline Config
+" ------------------------------------------------------------------
+"set laststatus=2
+"let g:Powerline_symbols = "fancy"
+"let g:Powerline_theme=""
+"let g:Powerline_colorscheme='solarized'
+
+" ------------------------------------------------------------------
+" Airline Config
+" ------------------------------------------------------------------
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_theme = 'solarizing'
+set laststatus=2
 
 " Tab completion options
 " (only complete to the longest unambiguous match, and show a menu)

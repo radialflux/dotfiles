@@ -1,6 +1,10 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.zsh
 
+
+[[ -n "$SSH_CLIENT" ]] || export DEFAULT_USER="Greg"
+
+
 ZSH_THEME="agnoster"
 
 # OMZ Default Options
@@ -22,20 +26,9 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
+#
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
@@ -55,6 +48,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 alias vi="mvim"
 alias zshconfig="mvim ~/.zshrc"
 alias dev="cd ~/Documents/Development"
+alias tmux="tmux -2"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
