@@ -1,3 +1,4 @@
 tag-private/*
 ssh
 .DS_Store
+*.swp
