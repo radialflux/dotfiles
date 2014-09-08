@@ -36,14 +36,11 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'bling/vim-airline'
-Bundle 'edkolev/promptline.vim'
 
 call vundle#end()
 
 
-set guifont=Anonymice\ Powerline:h16
+set guifont=Monaco\ for\ Powerline:h16
 
 " ------------------------------------------------------------------
 " Solarized Colorscheme Config
@@ -54,26 +51,33 @@ set background=dark
 colorscheme solarized
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
-set noshowmode
 
 
 
 " ------------------------------------------------------------------
 " Powerline Config
 " ------------------------------------------------------------------
-"set laststatus=2
-"let g:Powerline_symbols = "fancy"
-"let g:Powerline_theme=""
-"let g:Powerline_colorscheme='solarized'
+source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
+set laststatus=2
+let g:Powerline_symbols = "fancy"
+let g:Powerline_theme = "default"
+let g:Powerline_colorscheme = "solarized"
+set noshowmode
+let g:Powerline_symbols = "fancy"
+set encoding=utf-8
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
+set termencoding=utf-8
 
 " ------------------------------------------------------------------
 " Airline Config
 " ------------------------------------------------------------------
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_theme = 'solarizing'
-set laststatus=2
+" let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline_theme = 'solarizing'
+" set laststatus=2
 
 " Tab completion options
 " (only complete to the longest unambiguous match, and show a menu)

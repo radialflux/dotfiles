@@ -1,11 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.zsh
 
-
-[[ -n "$SSH_CLIENT" ]] || export DEFAULT_USER="Greg"
-
-
-ZSH_THEME="agnoster"
+ZSH_THEME="agnostication"
 
 # OMZ Default Options
 # CASE_SENSITIVE="true"
@@ -41,7 +37,7 @@ export LANG=en_US.UTF-8
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
-#
+
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
@@ -52,5 +48,11 @@ alias tmux="tmux -2"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+[[ -n "$SSH_CLIENT" ]] || export DEFAULT_USER="Greg"
+
+############################################################################
+# Powerline Config goes here                                               #
+############################################################################
+powerline-daemon -q
+source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
