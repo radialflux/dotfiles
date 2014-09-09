@@ -34,7 +34,7 @@ I mention Tmux below
 
 `$ brew install tmux`
 
-![MacVim](https://raw.githubusercontent.com/gregkellogg/dotfiles/master/images/tmux.png)
+![MacVim](https://raw.githubusercontent.com/gregkellogg/dotfiles/master/images/Tmux.png)
 Tmux on Powerline
 
 ### Install
