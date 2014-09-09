@@ -43,6 +43,8 @@ export ARCHFLAGS="-arch x86_64"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 alias vi="mvim"
+alias e="mvim"
+alias v="mvim"
 alias zshconfig="mvim ~/.zshrc"
 alias dev="cd ~/Documents/Development"
 
