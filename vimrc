@@ -61,10 +61,9 @@ let g:solarized_contrast = "high"
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
 set laststatus=2
 let g:Powerline_symbols = "fancy"
-let g:Powerline_theme = "default"
+let g:Powerline_theme = "solarized"
 let g:Powerline_colorscheme = "solarized"
 set noshowmode
-let g:Powerline_symbols = "fancy"
 set encoding=utf-8
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\

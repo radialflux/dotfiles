@@ -1,6 +1,16 @@
 {
 	"default_module": "powerline.segments.common",
 	"segments": {
+    "left": [
+      {
+        "function": "user",
+        "priority": 10
+      },
+      {
+        "function": "battery",
+        "priority": 10
+      }
+   ],
 		"right": [
 			{
 				"function": "uptime",

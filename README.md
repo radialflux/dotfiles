@@ -7,50 +7,64 @@ I have been through a few itterations of dotfiles.  None of them really seemed t
 ### Requirements
 
 ---- 
+#### Powerline
+Install [Powerline]
 
+`$ pip install --user git+git://github.com/Lokaltog/powerline`
+
+#### MacVim
+Install [MacVim].  I create a formula for brew, this give finder functionality & a new icon to bring it up-to-date.
+
+`$ brew tap gregkellogg/macvimsplitbrowser`
+`$ brew install macvim-split-browser`
+
+(https://github.com/gregkellogg/dotfiles/blob/master/images/MacVim.png)
+
+MacVim on Powerline
+#### Oh-My-ZSH
 Set zsh as your login shell:
-`chsh -s $(which zsh)`
+
+`$ chsh -s $(which zsh)`
+
+(https://github.com/gregkellogg/dotfiles/blob/master/images/zsh.png)
+ZSH on Powerline
+
+#### Tmux
+I mention Tmux below
+
+`$ brew install tmux`
+
+(https://github.com/gregkellogg/dotfiles/blob/master/images/Tmux.png)
+Tmux on Powerline
 
 ### Install
 
 ---- 
 
 1. Clone to your machine:
-	`git clone git://github.com/gregkellogg/dotfiles.git`
 
-2. Install [RCM](https://github.com/thoughtbot/rcm)
-	`brew tap thoughtbot/formulae`
-	`brew install rcm`
+	`$ git clone git://github.com/gregkellogg/dotfiles.git`
+
+2. Install [RCM]
+
+	`$ brew tap thoughtbot/formulae`
+	`$ brew install rcm`
 
 3. Sync up your files
-	`lsrc`
-	`rcup -v`
+
+	`$ lsrc`
+	`$ rcup -v`
 
 4. When you need to add new files
-	`mkrc ~/.tigrc`
 
-5. There is more to it in the [tutorial](http://thoughtbot.github.io/rcm/rcm.7.html) or type 
-	`man rcm`
+	`$ mkrc ~/.tigrc`
 
-### What's in it?
+5. There is more to it in the [tutorial] or type 
 
----- 
-
-[vim](http://www.vim.org/)(http://www.vim.org/) configuration:
-- [Vundle](https://github.com/gmarik/Vundle.vim.git)
-- [Solarized](https://github.com/altercation/solarized.git) color theme
-- [Pathogen](https://github.com/tpope/vim-pathogen.git)
-- Much more, and I am still adding
-
-[tmux](http://tmux.sourceforge.net) (http://www.vim.org/)
-- A good crash course can be found [here](http://robots.thoughtbot.com/a-tmux-crash-course)
-
-[git](#)(http://git-scm.com/) configuration:
-
-[Oh-My-ZSH](http://ohmyz.sh) (http://ohmyz.sh)
+	`$ man rcm`
 
 ### License
 
 ---- 
 
-This software is free and distributable under the [BSD](http://opensource.org/licenses/BSD-2-Clause) license.
+This software is free and distributable under the [BSD] license.
