@@ -40,7 +40,8 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 call vundle#end()
 
 
-set guifont=Monaco\ for\ Powerline:h16
+" set guifont=Monaco\ for\ Powerline:h16
+set guifont=Sauce\ Code\ Powerline:h16
 
 " ------------------------------------------------------------------
 " Solarized Colorscheme Config
@@ -54,9 +55,9 @@ let g:solarized_contrast = "high"
 
 
 
-" ------------------------------------------------------------------
-" Powerline Config
-" ------------------------------------------------------------------
+" +-----------------------------------------+
+" | Powerline Config                        |
+" +-----------------------------------------+
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
 set laststatus=2
 let g:Powerline_symbols = "fancy"
@@ -69,17 +70,12 @@ set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
 set termencoding=utf-8
+" +-----------------------------------------+
+" | End Powerline Config                    |
+" +-----------------------------------------+
 
-" ------------------------------------------------------------------
-" Airline Config
-" ------------------------------------------------------------------
-" let g:airline_powerline_fonts = 1
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = '|'
-" let g:airline_theme = 'solarizing'
-" set laststatus=2
 
-" Tab completion options
+
 " (only complete to the longest unambiguous match, and show a menu)
 set completeopt=longest,menu
 set wildmode=list:longest,list:full
