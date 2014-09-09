@@ -1,11 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.zsh
 
-############################################################################
-# Powerline Config goes here                                               #
-############################################################################
-powerline-daemon -q
-. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 ZSH_THEME="agnostication"
 
@@ -55,3 +50,8 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [[ -n "$SSH_CLIENT" ]] || export DEFAULT_USER="Greg"
 
+############################################################################
+# Powerline Config goes here                                               #
+############################################################################
+powerline-daemon -q
+. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh

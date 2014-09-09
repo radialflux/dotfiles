@@ -26,7 +26,7 @@
 		},
 		"vim": {
 			"colorscheme": "solarized",
-			"theme": "solarized",
+			"theme": "default",
 			"local_themes": {
 				"__tabline__": "tabline",
 
