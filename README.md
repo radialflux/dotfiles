@@ -18,7 +18,7 @@ Install [MacVim].  I create a formula for brew, this give finder functionality &
 `$ brew tap gregkellogg/macvimsplitbrowser`
 `$ brew install macvim-split-browser`
 
-(https://github.com/gregkellogg/dotfiles/blob/master/images/MacVim.png)
+![MacVim](https://github.com/gregkellogg/dotfiles/blob/master/images/MacVim.png)
 
 MacVim on Powerline
 #### Oh-My-ZSH
@@ -26,7 +26,7 @@ Set zsh as your login shell:
 
 `$ chsh -s $(which zsh)`
 
-(https://github.com/gregkellogg/dotfiles/blob/master/images/zsh.png)
+![ZSH](https://github.com/gregkellogg/dotfiles/blob/master/images/zsh.png)
 ZSH on Powerline
 
 #### Tmux
@@ -34,7 +34,7 @@ I mention Tmux below
 
 `$ brew install tmux`
 
-(https://github.com/gregkellogg/dotfiles/blob/master/images/Tmux.png)
+![Tmux](https://github.com/gregkellogg/dotfiles/blob/master/images/Tmux.png)
 Tmux on Powerline
 
 ### Install
