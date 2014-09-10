@@ -55,27 +55,14 @@
 				<key>daterange</key>
 				<integer>0</integer>
 				<key>fields</key>
-				<array>
-					<dict>
-						<key>field</key>
-						<string>kMDItemOMUserTags</string>
-						<key>not</key>
-						<false/>
-						<key>split</key>
-						<false/>
-						<key>value</key>
-						<string>project</string>
-						<key>words</key>
-						<true/>
-					</dict>
-				</array>
+				<array/>
 				<key>includesystem</key>
 				<false/>
 				<key>keyword</key>
 				<string>projects</string>
 				<key>scopes</key>
 				<array>
-					<string>~/Documents</string>
+					<string>~/Documents/Projects</string>
 				</array>
 				<key>subtext</key>
 				<string>Looking...</string>
@@ -93,36 +80,6 @@
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>keyword</key>
-				<string>proj</string>
-				<key>runningsubtext</key>
-				<string>Wait</string>
-				<key>script</key>
-				<string>mdfind -interpret tag:@project
-</string>
-				<key>subtext</key>
-				<string>Wait</string>
-				<key>title</key>
-				<string>Wait</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>1BEFC685-FBE9-402C-BF64-9AF2BF639900</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -132,11 +89,6 @@
 		<dict>
 			<key>ypos</key>
 			<real>60</real>
-		</dict>
-		<key>1BEFC685-FBE9-402C-BF64-9AF2BF639900</key>
-		<dict>
-			<key>ypos</key>
-			<real>300</real>
 		</dict>
 		<key>7E17DF81-4EB8-4721-96EA-6C4FDCE0AC41</key>
 		<dict>

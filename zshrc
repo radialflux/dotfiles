@@ -3,17 +3,24 @@ export TERM=xterm-256color
 export ZSH=$HOME/.zsh
 
 
-ZSH_THEME="powerline"
+ZSH_THEME="solar-powerline"
+export POWERLINE_HIDE_HOST_NAME=1
+export POWERLINE_HIDE_USER_NAME=1
+export POWERLINE_RIGHT_B=""
+export POWERLINE_RIGHT_A="exit-status"
+export POWERLINE_SHOW_GIT_ON_RIGHT=1
+export POWERLINE_FULL_CURRENT_PATH="%~"
 
-# OMZ Default Options
-# CASE_SENSITIVE="true"
-# DISABLE_AUTO_UPDATE="true"
-# export UPDATE_ZSH_DAYS=13
-# DISABLE_LS_COLORS="true"
-# DISABLE_AUTO_TITLE="true"
-# ENABLE_CORRECTION="true"
-# COMPLETION_WAITING_DOTS="true"
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+# Characters
+SEGMENT_SEPARATOR="\ue0b0"
+PLUSMINUS="\u00b1"
+BRANCH="\ue0a0"
+DETACHED="\u27a6"
+CROSS="\u2718"
+LIGHTNING="\u26a1"
+GEAR="\u2699"
+
+
 HIST_STAMPS="mm.dd.yyyy"
 
 
@@ -59,3 +66,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 #powerline-daemon -q
 # . /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
+unalias run-help
+autoload run-help
+HELPDIR=/usr/local/share/zsh/help

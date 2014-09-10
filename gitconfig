@@ -2,7 +2,7 @@
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
 [user]
-	name = Greg Kellogg
 	email = greg@kelloggs.fm
+	name = Greg Kellogg
 [push]
 	default = simple

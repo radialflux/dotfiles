@@ -24,7 +24,7 @@ if [ "$POWERLINE_FULL_CURRENT_PATH" = "" ]; then
   POWERLINE_CURRENT_PATH="%1~"
 fi
 
-if [ "$POWERLINE_FULL_CURRENT_PATH" = "relative" ]; then
+if [ "$POWERLINE_FULL_CURRENT_PATH" != "" ]; then
   POWERLINE_CURRENT_PATH="%~"
 fi
 
@@ -35,6 +35,9 @@ elif [ "$POWERLINE_HIDE_USER_NAME" != "" ] && [ "$POWERLINE_HIDE_HOST_NAME" = ""
     POWERLINE_USER_NAME="@%M"
 elif [ "$POWERLINE_HIDE_USER_NAME" = "" ] && [ "$POWERLINE_HIDE_HOST_NAME" != "" ]; then
     POWERLINE_USER_NAME="%n"
+elif [ "$POWERLINE_FULL_CURRENT_PATH" = "%~" ]; then
+    POWERLINE_USER_NAME="$POWERLINE_CURRENT_PATH"
+    POWERLINE_CURRENT_PATH=$(git_branch_name)
 else
     POWERLINE_USER_NAME=""
 fi

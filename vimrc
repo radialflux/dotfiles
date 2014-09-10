@@ -1,6 +1,7 @@
 set nocompatible     
 syntax enable
 set backspace=indent,eol,start
+set guioptions=R
 
 execute pathogen#infect()
 set nobackup
