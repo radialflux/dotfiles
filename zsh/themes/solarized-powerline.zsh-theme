@@ -1,0 +1,1 @@
+/Users/Greg/.dotfiles/zsh/themes/oh-my-zsh-solarized-powerline-theme/solarized-powerline.zsh-theme

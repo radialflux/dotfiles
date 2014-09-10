@@ -1,8 +1,9 @@
 # Path to your oh-my-zsh installation.
+export TERM=xterm-256color
 export ZSH=$HOME/.zsh
 
 
-ZSH_THEME="agnostication"
+ZSH_THEME="powerline"
 
 # OMZ Default Options
 # CASE_SENSITIVE="true"
@@ -55,6 +56,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 ############################################################################
 # Powerline Config goes here                                               #
 ############################################################################
-powerline-daemon -q
-. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+#powerline-daemon -q
+# . /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
