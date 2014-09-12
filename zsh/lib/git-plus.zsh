@@ -6,14 +6,10 @@ function git_branch_name() {
   fi
 }
 
-function current_rvm_version() {
-  ref=$(command rvm current 2> /dev/null);
-  [[ -n $ref ]] && CURRENT_RVM_VERSION=$ref || CURRENT_RVM_VERSION="RVM Not Installed" 
-  echo $CURRENT_RVM_VERSION
-}
 
 function src {
   autoload -U zrecompile
+    rm -f ~/.zcompdump*
     [ -f ~/.zshrc ] && zrecompile -p ~/.zshrc
     [ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump
     [ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump
@@ -68,3 +64,8 @@ function time_since_commit() {
   fi
 }
 
+function current_rvm_version() {
+  ref=$(command rvm current 2> /dev/null);
+  [[ -n $ref ]] && CURRENT_RVM_VERSION=$ref || CURRENT_RVM_VERSION="RVM Not Installed" 
+  echo $CURRENT_RVM_VERSION
+}
