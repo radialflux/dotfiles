@@ -15,7 +15,7 @@ solar_powered_prompt_setup
 
 
 if [ "$POWERLINE_DATE_FORMAT" = "" ]; then
-  POWERLINE_DATE_FORMAT=%D{%d.%m.%Y}
+  POWERLINE_DATE_FORMAT=%D{%m.%d.%Y}
 fi
 
 if [ "$POWERLINE_RIGHT_B" = "" ]; then
@@ -138,7 +138,7 @@ if [ "$POWERLINE_DETECT_SSH" != "" ]; then
   fi
 fi
 
-PROMPT="$POWERLINE_SEC1_BG$POWERLINE_SEC1_TXT $POWERLINE_USER_NAME:l\
+PROMPT="$POWERLINE_SEC1_BG$POWERLINE_SEC1_TXT $POWERLINE_USER_NAME\
 %k%f$POWERLINE_SEC1_FG%K{blue}"$'\ue0b0'"%k%f%F{white}%K{blue}\
 "$POWERLINE_CURRENT_PATH"%F{blue}"$POWERLINE_GIT_INFO_LEFT" %k"$'\ue0b0'"%f "
 
