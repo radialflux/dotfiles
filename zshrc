@@ -3,23 +3,7 @@ export TERM=xterm-256color
 export ZSH=$HOME/.zsh
 
 
-ZSH_THEME="solar-powerline"
-export POWERLINE_HIDE_HOST_NAME=1
-export POWERLINE_HIDE_USER_NAME=1
-export POWERLINE_RIGHT_B=""
-export POWERLINE_RIGHT_A="exit-status"
-export POWERLINE_SHOW_GIT_ON_RIGHT=1
-export POWERLINE_FULL_CURRENT_PATH="%~"
-
-# Characters
-SEGMENT_SEPARATOR="\ue0b0"
-PLUSMINUS="\u00b1"
-BRANCH="\ue0a0"
-DETACHED="\u27a6"
-CROSS="\u2718"
-LIGHTNING="\u26a1"
-GEAR="\u2699"
-
+ZSH_THEME="solar-powered"
 
 HIST_STAMPS="mm.dd.yyyy"
 
@@ -29,17 +13,11 @@ plugins=(atom themes vim-interaction vundle xcode git bower battery brew brew-ca
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:."
 #
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
-if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
-       else
-   export EDITOR='mvim'
-fi
 
 export LANG=en_US.UTF-8
 
@@ -53,10 +31,17 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 alias vi="mvim"
 alias e="mvim"
 alias v="mvim"
+alias vim="/usr/local/Cellar/macvim-split-browser/740022/MacVim.app/Contents/MacOS/Vim"
 alias zshconfig="mvim ~/.zshrc"
 alias dev="cd ~/Documents/Development"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+       else
+   export EDITOR='mvim'
+fi
 
 [[ -n "$SSH_CLIENT" ]] || export DEFAULT_USER="Greg"
 
@@ -66,6 +51,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 #powerline-daemon -q
 # . /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
-unalias run-help
-autoload run-help
-HELPDIR=/usr/local/share/zsh/help
+export POWERLINE_DATE_FORMAT=""
+export POWERLINE_FULL_CURRENT_PATH="relative"
+export POWERLINE_RIGHT_A='rvm'
+export POWERLINE_RIGHT_B="date"

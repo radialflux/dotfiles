@@ -2,6 +2,8 @@ set nocompatible
 syntax enable
 set backspace=indent,eol,start
 set guioptions=R
+set guioptions=e
+set number
 
 execute pathogen#infect()
 set nobackup
@@ -22,7 +24,11 @@ endif
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set smartindent
+filetype plugin indent on
 
+autocmd BufNewFile,BufRead *.zsh-theme set syntax=zsh
+autocmd BufNewFile,BufRead *.conf set syntax=sh
 
 " \ is the leader character
 let mapleader = ","
@@ -37,6 +43,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 
@@ -48,7 +56,6 @@ set guifont=Sauce\ Code\ Powerline:h16
 " Solarized Colorscheme Config
 " ------------------------------------------------------------------
 let g:solarized_termcolors=256    "default value is 16
-syntax enable
 set background=dark
 colorscheme solarized
 let g:solarized_visibility = "high"
@@ -90,16 +97,4 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 set tags=./tags;
 
 let g:fuf_splitPathMatching=1
-
-command -bar -nargs=1 OpenURL :!open <args>
-function! OpenURL()
-  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
-  echo s:uri
-  if s:uri != ""
-      	  exec "!open \"" . s:uri . "\""
-  else
-    	  echo "No URI found in line."
-  endif
-endfunction
-map <Leader>w :call OpenURL()<CR>
 
