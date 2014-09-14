@@ -1,109 +1,99 @@
 
+function return_segment() {
 
-SEGMENT_SEPARATOR="\ue0b0"
-PLUSMINUS="\u00b1"
-BRANCH="\ue0a0"
-DETACHED="\u27a6"
-CROSS="\u2718"
-LIGHTNING="\u26a1"
-GEAR="\u2699"
-BULLET="\u233e"
+# bg = Background main segment
+# fg = Text colors
+# ng = background color of the next segment
+# info = The content to be surrounded by marks
+
+  local bg fg ng info
+  bg="%K{$1}" fg="%F{$2}" info=$4
+  [[ $3 = "NC" ]] && ng=%F{$2}$L_SEGMENT_SEPARATOR%f || ng="%K{$3}%F{$1}$L_SEGMENT_SEPARATOR%f%k"
+
+  print -n "$bg$fg"
+  print -n "$info%f%k"
+  print -n ${ng}
+}
+
+function prompt_left_seg_a() {
+  info=`print -P %m`
+  return_segment $GREEN $BLACK $BASE00 " $info:u " 
+}
+
+function prompt_left_seg_b() {
+  info=$(battery_status_prompt)
+  return_segment $BASE00 $BLACK $BASE0 " $info " 
+}
+
+function prompt_left_seg_c() {
+  info=`print -P %~`
+  return_segment $BASE0 $WHITE $WHITE " $info " 
+}
+
+function prompt_left_seg_d() {
+  info=$(git_branch_name)
+
+  return_segment $WHITE $BLACK $CLEAR " $info:u "
+}
+
+#function prompt_left_seg_b() {
+#  local info sep pre post 
+#
+#  info=" %~ "
+#  sep="%K{$BASE2}%F{$BASE00}$L_SEGMENT_SEPARATOR%k"
+#  pre="%K{$BASE00}%F{$BASE2}"
+#  post="%k%f"
+#
+#  print -n ${pre} 
+#  print -n ${info} 
+#  print -n ${sep}
+#  print -n ${post}
+#}
+
+#function prompt_left_seg_c() {
+#  local info sep pre post 
+#
+#  [[ -z $info ]] && print -n " NOREPO ${post}" || print -n " ${info:u} ${post}"
+#  sep="%K{$BASE2}%F{$BASE00}$L_SEGMENT_SEPARATOR%k"
+#  post="%F{$BASE2}$L_SEGMENT_SEPARATOR"
+#  pre="%K{$BASE2}%F{$WHITE}"
+#
+#  print -n ${pre} 
+#  print -n ${info} 
+#  print -n ${sep}
+#  print -n ${post}
+#}
 
 function battery_status_prompt() {
-
-  case $(battery_pct_prompt) in
-    <1-33>) 
-      print -n " %K{orange}%F{160}\u25e6%f%k";;
-    <33-66>) 
-      print -n " %K{orange}%F{82}\u25e6%f%k";; 
+  local info
+  info=`battery_pct_prompt | cut -d% -f3 | tr -d '}['`
+  case ${info} in
+    <1-33>)
+      print -n "%F{$RED}\u25e6%f";;
+    <33-66>)
+      print -n "%F{$ORANGE}\u25e6%f";;
     *∞*)
-      print -n "%F{242}%K{240}"$'\ue0b2'"%K{242}%F{154} ∞ ";;
-    *) 
-      print -n "%K{orange}%F{154}\u25e6%f%k";;
+      print -n "%F{$WHITE}∞%f";;
+    *)
+      print -n "%F{$YELLOW}\u25e6%f";;
   esac
 }
+function solar_powered_main() {
+  #Left side segments
+   prompt_left_seg_a
+   prompt_left_seg_b
+   prompt_left_seg_c
+   prompt_left_seg_d
 
-# Git: branch/detached head, dirty status
-prompt_git() {
-  local color ref
-  is_dirty() {
-    test -n "$(git status --porcelain --ignore-submodules)"
-  }
-  ref="$vcs_info_msg_0_"
-  if [[ -n "$ref" ]]; then
-    if is_dirty; then
-      color=yellow
-      ref="${ref} $PLUSMINUS"
-    else
-      color=green
-      ref="${ref} "
-    fi
-    if [[ "${ref/.../}" == "$ref" ]]; then
-      ref="$BRANCH $ref"
-    else
-      ref="$DETACHED ${ref/.../}"
-    fi
-    prompt_segment $color $PRIMARY_FG
-    print -Pn " $ref"
-  fi
 }
-
-
-function git_time_details() {
-  # only proceed if there is actually a git repository
-  if `git rev-parse --git-dir > /dev/null 2>&1`; then
-    # only proceed if there is actually a commit
-    if [[ $(git log 2>&1 > /dev/null | grep -c "^fatal: bad default revision") == 0 ]]; then
-      # get the last commit hash
-      # lc_hash=`git log --pretty=format:'%h' -1 2> /dev/null`
-      # get the last commit time
-      lc_time=`git log --pretty=format:'%at' -1 2> /dev/null`
-
-      now=`date +%s`
-      seconds_since_last_commit=$((now-lc_time))
-      lc_time_since=`time_since_commit $seconds_since_last_commit`
-
-      echo "$lc_time_since"
-    else
-      echo ""
-    fi
-  else
-    echo ""
-  fi
-}
-
-# returns the time by given seconds
-function time_since_commit() {
-  seconds_since_last_commit=$(($1 + 0))
-
-  # totals
-  MINUTES=$((seconds_since_last_commit / 60))
-  HOURS=$((seconds_since_last_commit/3600))
-
-  # sub-hours and sub-minutes
-  DAYS=$((seconds_since_last_commit / 86400))
-  SUB_HOURS=$((HOURS % 24))
-  SUB_MINUTES=$((MINUTES % 60))
-
-  if [ "$HOURS" -gt 24 ]; then
-    echo "${DAYS}d${SUB_HOURS}h${SUB_MINUTES}m"
-  elif [ "$MINUTES" -gt 60 ]; then
-    echo "${HOURS}h${SUB_MINUTES}m"
-  else
-    echo "${MINUTES}m"
-  fi
-}
-
 prompt_powerline_precmd() {
+  PROMPT="$(solar_powered_main) "
   POWERLINE_DATE_FORMAT=%D{%d.%m.%Y}
   POWERLINE_CURRENT_PATH="%~"
-  POWERLINE_GIT_INFO=" %F{blue}%K{white}"$'\ue0b0'" %F{white}%F{black}%K{white}"$'$(git_branch_name)$(git_prompt_status)%F{white}'
+  POWERLINE_GIT_INFO=" %F{blue}%K{230}"$'\ue0b0'" %F{230}%F{black}%K{230}"$'$(git_prompt_status)%F{230}'
   RVM_CURRENT_RUBY="$(rvm_prompt_info | tr -d ')(') "
-  POWERLINE_USER_NAME="%n@%M"
-  POWERLINE_BATTERY="$(battery_status_prompt)"
-  }
-
-
+}
+# Git: branch/detached head, dirty status
 
 if [ "$POWERLINE_GIT_CLEAN" = "" ]; then
   POWERLINE_GIT_CLEAN="✔"
@@ -137,7 +127,6 @@ if [ "$POWERLINE_GIT_UNMERGED" = "" ]; then
   POWERLINE_GIT_UNMERGED="═"
 fi
 
-# ZSH_THEME_GIT_PROMPT_PREFIX=" \ue0a0 "
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_DIRTY=" $POWERLINE_GIT_DIRTY"
 ZSH_THEME_GIT_PROMPT_CLEAN=" $POWERLINE_GIT_CLEAN"
@@ -152,43 +141,46 @@ ZSH_THEME_GIT_PROMPT_AHEAD=" ⬆"
 ZSH_THEME_GIT_PROMPT_BEHIND=" ⬇"
 ZSH_THEME_GIT_PROMPT_DIVERGED=" ⬍"
 
-if [ $(id -u) -eq 1 ]; then
-    POWERLINE_SEC1_BG=%K{red}
-    POWERLINE_SEC1_FG=%F{red}
-else
-    POWERLINE_SEC1_BG=%K{green}
-    POWERLINE_SEC1_FG=%F{green}
-fi
-POWERLINE_SEC1_TXT=%F{black}
-if [ "$POWERLINE_DETECT_SSH" != "" ]; then
-  if [ -n "$SSH_CLIENT" ]; then
-    POWERLINE_SEC1_BG=%K{red}
-    POWERLINE_SEC1_FG=%F{red}
-    POWERLINE_SEC1_TXT=%F{white}
-  fi
-fi
+
+solar_powered_setup() {
+
+  # Symbols
+  R_SEGMENT_SEPARATOR="\ue0b2"
+  L_SEGMENT_SEPARATOR="\ue0b0"
+  PLUSMINUS="\u00b1"
+  BRANCH="\ue0a0"
+  DETACHED="\u27a6"
+  CROSS="\u2718"
+  LIGHTNING="\u26a1"
+  GEAR="\u2699"
+  BULLET="\u233e"
+
+  # Solarize colors
+  BASE03=234 
+  BASE02=235 
+  BASE01=240 
+  BASE00=241 
+  BASE0=244 
+  BASE1=245 
+  BASE2=254 
+  BASE3=230 
+  YELLOW=136 
+  ORANGE=166 
+  RED=160 
+  MAGENTA=125 
+  VIOLET=61 
+  BLUE=33 
+  CYAN=37 
+  GREEN=64 
+  BLACK=$BASE02
+  WHITE=$BASE2
+  CLEAR=0
 
 
-solar_powered_prompt_setup() {
   autoload -Uz add-zsh-hook
-  autoload -Uz vcs_info
-
   prompt_opts=(cr subst percent)
   add-zsh-hook precmd prompt_powerline_precmd
 
-  zstyle ':vcs_info:*' enable git
-  zstyle ':vcs_info:*' check-for-changes false
-  zstyle ':vcs_info:git*' formats '%b'
-  zstyle ':vcs_info:git*' actionformats '%b (%a)'
-
-
-  PROMPT="$POWERLINE_SEC1_BG$POWERLINE_SEC1_TXT ${POWERLINE_USER_NAME:l} \
-%k%f$POWERLINE_SEC1_FG%K{blue}"$'\ue0b0'"%k%f%F{white}%K{blue}\
- ${POWERLINE_CURRENT_PATH}%F{blue}${POWERLINE_GIT_INFO} %k"$'\ue0b0'"%f "
-
-  RPROMPT="%F{white}"$'\ue0b2'"%k%F{black}%K{white} ${POWERLINE_DATE_FORMAT}%f%F{240} "$'\ue0b2'"%f%k%K{240}%F{255} ${RVM_CURRENT_RUBY:u} %f%k${POWERLINE_BATTERY}"
-
 }
 
-
-solar_powered_prompt_setup "$@"
+solar_powered_setup "$@"

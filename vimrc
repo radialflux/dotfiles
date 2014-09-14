@@ -45,6 +45,8 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ZenCoding.vim'
 
 call vundle#end()
 
@@ -98,3 +100,24 @@ set tags=./tags;
 
 let g:fuf_splitPathMatching=1
 
+map <D-S-]> gt
+map <D-S-[> gT
+map <D-1> 1gt
+map <D-2> 2gt
+map <D-3> 3gt
+map <D-4> 4gt
+map <D-5> 5gt
+map <D-6> 6gt
+map <D-7> 7gt
+map <D-8> 8gt
+map <D-9> 9gt
+map <D-0> :tablast<CR>
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
+
+an 10.290 File.Toggle\ NerdTree :NERDTreeToggle<CR> 
+
+set go-=T
+
+if has("gui_macvim")
+	  let macvim_hig_shift_movement = 1
+endif

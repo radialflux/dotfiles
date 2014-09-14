@@ -8,7 +8,7 @@ ZSH_THEME="solar-powered"
 HIST_STAMPS="mm.dd.yyyy"
 
 
-plugins=(atom themes vim-interaction vundle xcode git bower battery brew brew-cask bundler colorize git-extras git-flow git-prompt github rails rake rvm ruby tmux tmuxinator)
+plugins=(colorize colored-man themes vim-interaction common-aliases vundle git battery brew brew-cask bundler git-extras git-flow git-prompt github rails rake rvm ruby tmux tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -55,3 +55,5 @@ export POWERLINE_DATE_FORMAT=""
 export POWERLINE_FULL_CURRENT_PATH="relative"
 export POWERLINE_RIGHT_A='rvm'
 export POWERLINE_RIGHT_B="date"
+
+bindkey -v
