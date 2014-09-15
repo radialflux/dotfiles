@@ -2,3 +2,4 @@ tag-private/*
 ssh
 .DS_Store
 *.swp
+zsh/cache/*

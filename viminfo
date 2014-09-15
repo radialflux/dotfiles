@@ -8,92 +8,98 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/git_prom
+~MSle0~/amenu
 
 # Last Substitute Search Pattern:
-~MSle0&solarized
+~MSle0&sparkupMaps
 
 # Last Substitute String:
-$
+$230
 
 # Command Line History (newest to oldest):
-:mks! ~/Documents/Projects/powerline.project
-:q
-:BundleSearch linter
-:BundleSearch lister
 :w
-:62
-:set number
-:123
-:133
-:set smartindent
-:set smartindent on
-:filetype plugin smartindent on
-:filetype plugin 
-:filetype plugin indent on
-:h smartindent on
-:h smartindent
-:set smartindent=on
-:e /Users/Greg/.dotfiles/zsh/themes/powerline.zsh-theme
-:1
-:$
-:50
-:setfiletype zsh
-:setfiletype 
-:set filetype
-:wq!
-:e
-:so ~/.vimrc
-:e /Users/Greg/.dotfiles/zsh/themes/solar-powerline.zsh-theme
-:wq
-:set filetype=zsh
-:w!
-:set syntax=zsh
-:set
-:h syntax
-:filetype zsh
-:syntax zsh
-:syntax q
-:syntax list
-:BundleSearch syntax
-:syntax 
-:set cindent
-:syntax on
-:set fileformat=shell
-:set fileformat=bash
-:set filetype=bash
-:set filetype=shell
-:filetype = shell
-:w ~/.zsh/themes/solar-powerline.zsh-theme
-:s
-:q!
-:Q
-:Q!
+:e .vimrc
+:so .vimrc
 :source ~/Documents/Projects/powerline.project
+:wq
+:$
+:an 10.290 File.Toggle\ NerdTree :NERDTreeToggle<CR>:e
+:an 10.290 File.Toggle\ NerdTree :NERDTreeToggle<CR>
+:an 10.290 File.NerdTree :NERDTreeToggle<CR>
+:NERDTreeToggle
+:an 10.290 File.NerdTree :NERDTreeToggle
+:an 10.290 File.NerdTree <Nop> :NERDTreeToggle
+:so ~/.vimrc
+:N
+:q
 :BundleInstall
-:source ~/.vimrc
-:so ~/.vim/bundle/vim-sensi
-:b
-:bun
 :Bundle
-:sou
-:e .zsh/themes/solar-powerline.zsh-theme
-:mks ~/Documents/Projects/powerline.project
-:e .zsh/lib/git-plus.zsh
-:mks ~/Documents/Projects/powerline.project!
-:e .zsh/themes/solarized-powerline.zsh-theme
-:h guioptions
-:h go
-:set guioptions=e
-:set guioptions=R
-:se
+:NERDTreeTabsOpen
+::NERDTreeTabsOpen
+:map <Leader>n <plug>NERDTreeTabsToggle<CR>
+:let g:loaded_nerdtree_exec_menuitem
+:let g:loaded_nerdtree_fs_menu
+:menu 80.500 NerdTree.next :bn<CR>
+:nmenu File.NerdTree 
+:amenu File.NerdTree 
+:1057
+<if exists("g:loaded_nerdtree_shell_exec_menuitem")  finishendiflet g:loaded_nerdtree_shell_exec_menuitem = 1let s:haskdeinit = system("ps -e") =~ 'kdeinit'let s:hasdarwin = system("uname -s") =~ 'Darwin'call NERDTreeAddMenuItem({      \ 'text': 'e(x)ecute',      \ 'shortcut': 'x',      \ 'callback': 'NERDTreeExecute' })function! NERDTreeExecute()  let treenode = g:NERDTreeFileNode.GetSelected()  let path = treenode.path.str()  if has("gui_running")    let args = shellescape(path,1)." &"  else    let args = shellescape(path,1)." > /dev/null"  end  if has("unix") && executable("gnome-open") && !s:haskdeinit    exe "silent !gnome-open ".args    let ret= v:shell_error  elseif has("unix") && executable("kde-open") && s:haskdeinit    exe "silent !kde-open ".args    let ret= v:shell_error  elseif has("unix") && executable("open") && s:hasdarwin    exe "silent !open ".args    let ret= v:shell_error  elseif has("win32") || has("win64")    exe "silent !start explorer ".shellescape(path,1)  end  redraw!endfunction
+:h nmenu
+:371
+<:nmenu Words.Add\ Var		wb"zye:menu! Words.<C-R>z <C-R>z<CR>  :nmenu Words.Remove\ Var	wb"zye:unmenu! Words.<C-R>z<CR>  :vmenu Words.Add\ Var		"zy:menu! Words.<C-R>z <C-R>z <CR>  :vmenu Words.Remove\ Var	"zy:unmenu! Words.<C-R>z<CR>  :imenu Words.Add\ Var		<Esc>wb"zye:menu! Words.<C-R>z <C-R>z<CR>a  :imenu Words.Remove\ Var	<Esc>wb"zye:unmenu! Words.<C-R>z<CR>a
+:h NERDTreeMappings
+:NERDTree
+:nerdtree-T
+:let NERDTreeMenuController-m
+:h nerdtree
+:let NERDTreeMenuController=on
+:menu enable 
+:menu enable *
+:let g:solarized_menu 
+:let g:NERDTreeMenuController on
+:let g:NERDTreeMenuController=on
+:let g:NERDTreeMenuController
+:Nexplore
+:macmenu
+:let NERDTreeUI 
+:let NERDTree
+:let linters_enabled
+:let g:sparkupExecuteMapping
+:g:sparkupMaps
+:g:sparkup
+:h zencoding
+:PluginInstall
 
 # Search String History (newest to oldest):
-?/git_prom
+?/leader
+?/amenu
+?/menu
+? sparkupMaps
+? sparkup
+?/go
+?/gui
+?/path
+?/\.
+?/.
+?/list
+?/setup
+? white
+? *white*
+?/$s/white/230/g
+?/s/white/230/g
+?/prefix
+?/prompt
+?/right_b
 ?/rvm
+?/right_a
+?/ruby
+?/curren
+?/RVM
+?/USER_NAME
+?/context
+?/git_prom
 ?/rpro
 ?/promp
-?/prompt
 ?/user
 ?/yell
 ?//\u
@@ -106,49 +112,15 @@ $
 ?/auto
 ?/filet
 ?/syntax
-?/right_a
 ?/branch
 ?/$(git
 ?/GIT_INFO
-?/path
 ?/tabs
 ?/tab
 ?/POWERLINE_USER_NAME
 ?/ue0b0
 ?/%d
 ?/CURRENT_PATH
-?/%k%
-?/POWERLINE_SEC1_FG
-?/left
-?/hos
-?/bind
-?/PATH
-?/base0
-?/orange
-?/map
-?/imap
-?/clip
-?/past
-?/time
-?/powerline
-?/power
-?/lib
-?/utf
-?/USER
-?/bsd
-?/theme
-?/pow
-?/integ
-?/Users/Greg/.dotfiles/vim/bundle/vim-airline/autoload/airline/themes/solarizeder.vim 
-?/filety
-?/PROMPT
-?/CFLAGS
-?/CFL
-?/CC
-?/status
-?/solarized
-?/NW
-?/base2
 
 # Expression History (newest to oldest):
 
@@ -159,43 +131,110 @@ $
 
 # Registers:
 "0	LINE	0
-	POWERLINE_LEFT_SEGMENT_SEPARATOR"="
-"1	CHAR	0
-	ue0b0
-"2	CHAR	0
-	 \ue0b0
-"3	CHAR	0
-	%{$fg_bold[${(L)COLOR}]%}
+	   prompt_left_seg_c
+""1	LINE	0
+	Bundle 'jistr/vim-nerdtree-tabs'
+"2	LINE	0
+	Plugin 'rstacruz/sparkup'
+"3	LINE	0
+	
 "4	LINE	0
-	  eval PR_BOLD_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
+	fi
 "5	LINE	0
-	POWERLINE_RIGHT_2="$POWERLINE_BRANCH"
+	  POWERLINE_GIT_DIRTY="✘"
 "6	LINE	0
-	POWERLINE_RIGHT_1="$RVM_CURRENT_RUBY_VERSION"
+	if [ "$POWERLINE_GIT_DIRTY" = "" ]; then
 "7	LINE	0
-	POWERLINE_RIGHT_1="$SSH_STATUS"
-"8	CHAR	0
-	LEFT
-"9	CHAR	0
-	LEFT
-""-	CHAR	0
-	%
+	
+"8	LINE	0
+	
+"9	LINE	0
+	
+	function battery_status_prompt() {
+	
+	  case $(battery_pct_prompt) in
+	    <1-33>)
+	      print -n "%F{154} \u25e6%f";;
+	    <33-66>)
+	      print -n "%F{154} \u25e6%f";;
+	    *∞*)
+	      print -n "%F{154} ∞%f";;
+	    *)
+	      print -n "%F{154} \u25e6%f";;
+	  esac
+	}
+"z	CHAR	0
+	.............................
+"-	CHAR	0
+	"
 
 # global variables:
 
 # File marks:
-'0  1  0  ~/Documents/Projects/powerline.project
-'1  140  16  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
-'2  31  46  ~/.vimrc
-'3  32  0  ~/.vimrc
-'4  65  0  ~/.vimrc
-'5  58  1  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
-'6  101  1  ~/.vimrc
-'7  56  0  ~/.zshrc
-'8  10  0  ~/.tmux.conf
-'9  34  4  ~/.zshrc
+'0  50  0  ~/.vimrc
+'1  117  1  ~/.vimrc
+'2  11  46  ~/.vimrc
+'3  1  0  ~/NERD_tree_1
+'4  1  0  /private/var/folders/qp/lt1jknps1t7_bxfd9wlffh880000gn/T/vw8TNMS/8
+'5  108  9  ~/.vimrc
+'6  120  31  ~/.vimrc
+'7  1  0  ~/.dotfiles/zsh/themes/powerline.zsh-theme
+'8  1  0  ~/.zshrc
+'9  113  11  ~/.vimrc
 
 # Jumplist (newest first):
+-'  50  0  ~/.vimrc
+-'  117  0  ~/.vimrc
+-'  1  0  ~/.vimrc
+-'  1  0  ~/.zshrc
+-'  11  46  ~/.vimrc
+-'  93  10  ~/NERD_tree_1
+-'  109  2  ~/NERD_tree_1
+-'  1  8  ~/NERD_tree_1
+-'  1  0  ~/zshrc-e
+-'  679  1  /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/gui.txt
+-'  537  39  /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/gui.txt
+-'  238  36  ~/.dotfiles/vim/bundle/nerdtree/doc/NERD_tree.txt
+-'  1  0  /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/gui.txt
+-'  119  2  ~/NERD_tree_1
+-'  1  0  ~/NetrwMessage
+-'  49  0  ~/.vimrc
+-'  48  7  ~/.vimrc
+-'  1  0  /private/var/folders/qp/lt1jknps1t7_bxfd9wlffh880000gn/T/vw8TNMS/8
+-'  32  0  ~/[Vundle] Installer
+-'  108  9  ~/.vimrc
+-'  115  4  ~/.vimrc
+-'  118  0  ~/.vimrc
+-'  5  15  ~/.vimrc
+-'  120  31  ~/.vimrc
+-'  119  0  ~/.vimrc
+-'  1  0  ~/.dotfiles/zsh/themes/powerline.zsh-theme
+-'  98  0  ~/.dotfiles/zsh/themes/solar-powered.zsh-theme
+-'  113  11  ~/.vimrc
+-'  9  206  ~/.zshrc
+-'  101  0  ~/.vimrc
+-'  8  0  /usr/local/Library/Taps/gregkellogg/homebrew-macvimsplitbrowser/macvim-split-browser.rb
+-'  51  32  /usr/local/Library/Taps/gregkellogg/homebrew-macvimsplitbrowser/macvim-split-browser.rb
+-'  1  0  /usr/local/Library/Taps/gregkellogg/homebrew-macvimsplitbrowser/macvim-split-browser.rb
+-'  41  0  /Library/Caches/Homebrew/macvim-split-browser--git/macvim-split-browser.rb
+-'  1  0  /Library/Caches/Homebrew/macvim-split-browser--git/macvim-split-browser.rb
+-'  2  0  /usr/local/Library/Formula/macvim-split-browser.rb
+-'  1  0  /usr/local/Library/Formula/macvim-split-browser.rb
+-'  15  9  /usr/local/Library/Taps/gregkellogg/homebrew-macvimsplitbrowser/macvim-split-browser.rb
+-'  1  0  ~/.dotfiles/zsh/lib/git.zsh
+-'  14  23  ~/.dotfiles/zsh/themes/powerline.zsh-theme
+-'  4  32  ~/.dotfiles/zsh/themes/powerline.zsh-theme
+-'  137  1  ~/.dotfiles/zsh/themes/powerline.zsh-theme
+-'  7  0  ~/.dotfiles/zsh/themes/powerline.zsh-theme
+-'  41  0  ~/.dotfiles/zsh/themes/powerline.zsh-theme
+-'  1  0  ~/.dotfiles/zsh/themes/solar-powered.zsh-theme
+-'  11  169  ~/.zshrc
+-'  93  0  ~/.dotfiles/zsh/themes/solar-powered.zsh-theme
+-'  2  19  ~/.dotfiles/zsh/themes/solar-powered.zsh-theme
+-'  7  5  ~/.dotfiles/zsh/themes/solar-powered.zsh-theme
+-'  6  0  ~/.dotfiles/zsh/themes/solar-powered.zsh-theme
+-'  3  28  ~/.dotfiles/zsh/themes/solar-powered.zsh-theme
+-'  1  0  ~/.dotfiles/.gitignore
 -'  1  0  ~/Documents/Projects/powerline.project
 -'  140  16  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
 -'  144  89  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
@@ -229,91 +268,151 @@ $
 -'  82  1  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
 -'  73  29  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
 -'  75  0  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  9  6  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  1  2  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  140  16  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  144  89  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  36  32  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  89  35  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  109  33  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  153  25  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  130  1  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  145  0  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  5  22  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  6  21  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  148  18  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  137  0  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  125  26  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  154  76  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  149  9  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  3  0  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  143  53  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  146  16  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  118  26  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  51  0  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  155  39  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  122  0  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  116  0  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  121  20  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  136  0  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  117  0  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  124  24  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  33  0  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  61  30  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  82  1  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  73  29  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  75  0  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  9  6  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
--'  1  2  ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
+-'  117  0  ~/.dotfiles/vimrc
+-'  107  29  ~/.dotfiles/vimrc
+-'  116  0  ~/.dotfiles/vimrc
+-'  50  1  ~/.dotfiles/vimrc
+-'  1  0  ~/.dotfiles/vimrc
+-'  1  0  ~/.zshrc
+-'  78  10  ~/NERD_tree_1
 
 # History of marks within files (newest to oldest):
 
-> ~/Documents/Projects/powerline.project
+> ~/.vimrc
+	"	50	0
+	^	117	1
+	.	50	0
+	+	54	23
+	+	68	1
+	+	69	9
+	+	70	1
+	+	71	1
+	+	72	1
+	+	74	1
+	+	74	1
+	+	69	1
+	+	86	0
+	+	65	42
+	+	66	42
+	+	67	3
+	+	66	3
+	+	65	3
+	+	69	0
+	+	68	0
+	+	69	0
+	+	70	0
+	+	71	0
+	+	72	0
+	+	74	0
+	+	74	0
+	+	79	0
+	+	80	29
+	+	85	0
+	+	81	45
+	+	84	0
+	+	85	0
+	+	71	0
+	+	72	0
+	+	71	0
+	+	72	0
+	+	71	0
+	+	72	0
+	+	74	0
+	+	77	0
+	+	77	0
+	+	77	0
+	+	71	0
+	+	72	0
+	+	81	45
+	+	83	0
+	+	1	4
+	+	62	0
+	+	1	5
+	+	3	30
+	+	7	9
+	+	54	0
+	+	56	0
+	+	54	0
+	+	55	0
+	+	54	26
+	+	1	0
+	+	4	15
+	+	46	21
+	+	122	0
+	+	122	0
+	+	5	15
+	+	46	31
+	+	46	31
+	+	47	26
+	+	60	0
+	+	2	0
+	+	122	0
+	+	122	0
+	+	122	0
+	+	122	0
+	+	122	0
+	+	122	33
+	+	122	17
+	+	122	0
+	+	122	28
+	+	122	16
+	+	122	1
+	+	122	1
+	+	122	1
+	+	122	0
+	+	66	0
+	+	122	0
+	+	30	53
+	+	31	46
+	+	27	15
+	+	28	25
+	+	6	9
+	+	122	0
+	+	122	0
+	+	113	22
+	+	114	0
+	+	121	0
+	+	115	9
+	+	48	28
+	+	49	22
+	+	50	0
+	+	117	0
+	+	115	0
+	+	117	0
+	+	115	0
+	+	117	0
+	+	50	0
+
+> ~/NERD_tree_1
 	"	1	0
+	.	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
 
 > ~/.zshrc
-	"	55	30
-	^	55	31
-	.	55	30
-	+	21	0
-	+	17	0
-	+	21	42
-	+	21	143
-	+	6	0
-	+	5	0
-	+	17	35
-	+	21	0
-	+	16	0
-	+	3	25
-	+	60	0
-	+	61	1
-	+	60	0
-	+	61	0
-	+	2	0
-	+	61	0
-	+	60	0
-	+	6	21
-	+	7	33
-	+	7	26
-	+	17	0
-	+	7	31
-	+	7	25
-	+	7	26
-	+	7	38
-	+	7	36
-	+	7	6
-	+	7	32
-	+	7	0
-	+	16	0
-	+	14	0
-	+	7	35
-	+	7	0
-	+	7	44
-	+	6	25
-	+	7	38
-	+	63	0
-	+	64	0
-	+	65	0
+	"	1	0
+	^	9	207
+	.	9	184
+	+	68	0
 	+	7	26
 	+	7	34
 	+	7	31
@@ -326,27 +425,27 @@ $
 	+	7	40
 	+	7	24
 	+	7	0
-	+	21	0
-	+	21	24
-	+	21	0
-	+	21	0
-	+	62	0
-	+	62	0
-	+	62	24
-	+	62	0
-	+	62	24
-	+	62	46
-	+	62	30
-	+	62	27
-	+	62	24
-	+	62	24
-	+	62	24
-	+	62	25
-	+	62	45
-	+	62	24
-	+	62	24
-	+	16	0
-	+	62	0
+	+	22	0
+	+	22	24
+	+	22	0
+	+	22	0
+	+	65	0
+	+	65	0
+	+	65	24
+	+	65	0
+	+	65	24
+	+	65	46
+	+	65	30
+	+	65	27
+	+	65	24
+	+	65	24
+	+	65	24
+	+	65	25
+	+	65	45
+	+	65	24
+	+	65	24
+	+	17	0
+	+	65	0
 	+	8	0
 	+	12	29
 	+	13	0
@@ -355,9 +454,9 @@ $
 	+	10	37
 	+	9	37
 	+	14	43
+	+	17	0
 	+	16	0
-	+	15	0
-	+	57	0
+	+	60	0
 	+	34	86
 	+	34	4
 	+	54	21
@@ -366,15 +465,382 @@ $
 	+	55	4
 	+	54	6
 	+	55	26
-	+	57	0
-	+	21	0
+	+	60	0
+	+	22	0
 	+	40	0
 	+	44	2
 	+	55	29
 	+	56	0
 	+	54	0
 	+	56	0
-	+	55	30
+	+	55	31
+	+	6	0
+	+	55	35
+	+	6	23
+	+	56	30
+	+	55	7
+	+	57	28
+	+	56	28
+	+	57	26
+	+	56	29
+	+	54	30
+	+	57	29
+	+	5	19
+	+	6	0
+	+	60	0
+	+	59	9
+	+	60	18
+	+	6	23
+	+	11	110
+	+	60	0
+	+	15	28
+	+	28	10
+	+	29	0
+	+	29	0
+	+	29	51
+	+	29	51
+	+	30	54
+	+	28	53
+	+	29	52
+	+	28	55
+	+	29	54
+	+	29	54
+	+	30	56
+	+	28	50
+	+	29	49
+	+	28	52
+	+	30	51
+	+	29	49
+	+	9	184
+
+> ~/.dotfiles/zsh/themes/solar-powered.zsh-theme
+	"	1	0
+	^	67	9
+	.	98	0
+	+	36	0
+	+	37	0
+	+	38	0
+	+	40	0
+	+	41	0
+	+	39	0
+	+	42	0
+	+	43	0
+	+	44	0
+	+	45	0
+	+	46	0
+	+	47	0
+	+	48	0
+	+	28	44
+	+	81	1
+	+	28	39
+	+	10	50
+	+	28	43
+	+	50	0
+	+	51	0
+	+	52	0
+	+	53	0
+	+	54	0
+	+	55	0
+	+	56	0
+	+	57	0
+	+	58	0
+	+	59	0
+	+	60	0
+	+	61	0
+	+	62	0
+	+	28	22
+	+	169	0
+	+	167	14
+	+	168	8
+	+	167	8
+	+	28	37
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	16
+	+	1	31
+	+	1	30
+	+	1	27
+	+	1	32
+	+	1	32
+	+	1	29
+	+	1	32
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	31	0
+	+	35	0
+	+	16	25
+	+	81	19
+	+	17	0
+	+	21	0
+	+	26	0
+	+	20	0
+	+	22	27
+	+	23	46
+	+	22	8
+	+	21	26
+	+	26	25
+	+	31	25
+	+	81	0
+	+	82	1
+	+	83	19
+	+	1	0
+	+	1	0
+	+	2	0
+	+	93	0
+	+	135	0
+	+	1	0
+	+	64	0
+	+	23	23
+	+	18	37
+	+	69	23
+	+	71	23
+	+	73	23
+	+	75	23
+	+	69	22
+	+	71	25
+	+	73	24
+	+	75	25
+	+	23	47
+	+	68	0
+	+	66	53
+	+	67	13
+	+	98	0
+
+> ~/.dotfiles/zsh/themes/powerline.zsh-theme
+	"	1	0
+	^	137	0
+	.	2	0
+	+	42	0
+	+	42	0
+	+	42	39
+	+	42	0
+	+	42	0
+	+	42	0
+	+	42	0
+	+	42	0
+	+	42	46
+	+	42	0
+	+	21	0
+	+	20	0
+	+	4	32
+	+	137	0
+	+	2	0
+
+> ~/.dotfiles/zsh/themes/agnoster.zsh-theme
+	"	1	0
+	^	32	19
+	.	153	26
+	+	1	0
+	+	1	12
+	+	1	0
+	+	1	2
+	+	1	0
+	+	1	28
+	+	1	0
+	+	154	0
+	+	153	26
+
+> ~/.dotfiles/vimrc
+	"	117	0
+	^	118	0
+	.	117	0
+	+	119	0
+	+	50	0
+	+	116	0
+	+	108	0
+	+	117	0
+
+> ~/.dotfiles/[Vundle] Installer
+	"	13	0
+	.	1	0
+	+	13	0
+	+	1	0
+
+> ~/.dotfiles/NERD_tree_1
+	"	16	7
+	.	1	0
+	+	1	0
+
+> /Applications/MacVim.app/Contents/Resources/vim/runtime/menu.vim
+	"	125	2
+
+> ~/.dotfiles/vim/bundle/nerdtree/doc/NERD_tree.txt
+	"	238	36
+
+> ~/zshrc-e
+	"	1	0
+
+> ~/NERD_tree_2
+	"	4	0
+	.	1	0
+	+	1	0
+
+> /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/gui.txt
+	"	679	1
+
+> ~/NERD_tree_3
+	"	4	0
+	.	1	0
+	+	1	0
+
+> ~/[Vundle] Installer
+	"	12	0
+	.	1	0
+	+	188	0
+	+	180	0
+	+	170	0
+	+	160	0
+	+	151	0
+	+	142	0
+	+	132	0
+	+	123	0
+	+	114	0
+	+	105	0
+	+	97	0
+	+	89	0
+	+	81	0
+	+	73	0
+	+	65	0
+	+	57	0
+	+	49	0
+	+	41	0
+	+	32	0
+	+	22	0
+	+	12	0
+	+	1	0
+
+> ~/[Vundle] search
+	"	4	0
+	.	1	0
+	+	12	0
+	+	10	0
+	+	8	0
+	+	4	0
+	+	1	0
+
+> /private/var/folders/qp/lt1jknps1t7_bxfd9wlffh880000gn/T/vw8TNMS/8
+	"	1	0
+
+> /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/options.txt
+	"	3750	36
+
+> /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/motion.txt
+	"	389	0
+
+> ~/.dotfiles/zsh/custom/aliases.zsh
+	"	39	19
+	^	39	20
+	.	1	0
+	+	1	0
+
+> /usr/local/Library/Taps/gregkellogg/homebrew-macvimsplitbrowser/macvim-split-browser.rb
+	"	8	0
+	^	15	10
+	.	51	32
+	+	10	6
+	+	11	17
+	+	9	44
+	+	10	6
+	+	11	17
+	+	10	9
+	+	9	44
+	+	10	48
+	+	9	11
+	+	10	6
+	+	51	35
+	+	15	9
+	+	52	0
+	+	51	32
+
+> /Library/Caches/Homebrew/macvim-split-browser--git/macvim-split-browser.rb
+	"	41	0
+
+> /usr/local/Library/Formula/macvim-split-browser.rb
+	"	2	0
+	^	122	0
+	.	123	6
+	+	14	27
+	+	14	27
+	+	14	27
+	+	14	27
+	+	14	45
+	+	14	50
+	+	14	5
+	+	14	41
+	+	8	47
+	+	10	18
+	+	14	2
+	+	11	11
+	+	14	0
+	+	13	4
+	+	14	4
+	+	14	0
+	+	14	0
+	+	14	0
+	+	14	0
+	+	14	0
+	+	14	3
+	+	14	3
+	+	14	3
+	+	14	3
+	+	14	3
+	+	14	0
+	+	14	3
+	+	14	0
+	+	132	0
+	+	132	0
+	+	132	17
+	+	132	0
+	+	132	0
+	+	132	0
+	+	14	0
+	+	14	0
+	+	14	0
+	+	132	0
+	+	131	0
+	+	14	0
+	+	37	0
+	+	34	0
+	+	35	0
+	+	31	0
+	+	31	0
+	+	34	0
+	+	34	0
+	+	23	4
+	+	18	3
+	+	23	2
+	+	18	4
+	+	21	52
+	+	17	44
+	+	22	0
+	+	123	6
+
+> ~/.dotfiles/zsh/lib/git.zsh
+	"	1	0
+	.	152	0
+	+	151	27
+	+	117	0
+	+	152	0
+	+	152	74
+	+	152	39
+	+	152	8
+	+	152	25
+	+	152	18
+	+	143	0
+	+	152	3
+	+	152	0
 
 > ~/.tmux.conf
 	"	10	0
@@ -481,125 +947,6 @@ $
 	+	42	0
 	+	24	45
 
-> ~/.vimrc
-	"	6	9
-	^	6	10
-	.	6	9
-	+	70	0
-	+	71	0
-	+	72	0
-	+	73	0
-	+	73	0
-	+	74	0
-	+	75	0
-	+	76	0
-	+	77	0
-	+	71	0
-	+	70	0
-	+	71	0
-	+	53	38
-	+	53	4
-	+	53	1
-	+	53	23
-	+	67	1
-	+	68	9
-	+	69	1
-	+	70	1
-	+	71	1
-	+	73	1
-	+	73	1
-	+	68	1
-	+	85	0
-	+	64	42
-	+	65	42
-	+	66	3
-	+	65	3
-	+	64	3
-	+	68	0
-	+	67	0
-	+	68	0
-	+	69	0
-	+	70	0
-	+	71	0
-	+	73	0
-	+	73	0
-	+	78	0
-	+	79	29
-	+	84	0
-	+	80	45
-	+	83	0
-	+	84	0
-	+	70	0
-	+	71	0
-	+	70	0
-	+	71	0
-	+	70	0
-	+	71	0
-	+	73	0
-	+	76	0
-	+	76	0
-	+	76	0
-	+	70	0
-	+	71	0
-	+	80	45
-	+	82	0
-	+	1	4
-	+	61	0
-	+	1	5
-	+	3	30
-	+	7	9
-	+	53	0
-	+	55	0
-	+	53	0
-	+	54	0
-	+	53	26
-	+	1	0
-	+	4	15
-	+	46	21
-	+	101	0
-	+	101	0
-	+	5	15
-	+	46	31
-	+	46	31
-	+	47	26
-	+	59	0
-	+	2	0
-	+	101	0
-	+	101	0
-	+	101	0
-	+	101	0
-	+	101	0
-	+	101	33
-	+	101	17
-	+	101	0
-	+	101	28
-	+	101	16
-	+	101	1
-	+	101	1
-	+	101	1
-	+	101	0
-	+	65	0
-	+	101	0
-	+	30	53
-	+	31	46
-	+	27	15
-	+	28	25
-	+	6	9
-
-> ~/.dotfiles/zsh/themes/agnoster.zsh-theme
-	"	73	0
-	^	153	24
-	.	153	26
-	+	1	0
-	+	1	12
-	+	1	0
-	+	1	2
-	+	1	0
-	+	1	28
-	+	1	0
-	+	154	0
-	+	153	26
-
 > ~/.dotfiles/README.md
 	"	13	15
 	^	22	0
@@ -624,151 +971,176 @@ $
 	+	13	15
 
 > ~/.dotfiles/zsh/lib/git-plus.zsh
-	"	9	9
-	^	9	26
-	.	9	25
+	"	22	0
+	^	22	1
+	.	23	0
 	+	9	31
-	+	15	0
-	+	14	3
+	+	9	0
+	+	9	3
 	+	9	11
-	+	73	0
-	+	16	0
-	+	19	0
-	+	20	0
+	+	23	0
+	+	9	0
+	+	11	0
+	+	13	0
+	+	14	0
+	+	15	0
+	+	16	1
+	+	17	1
+	+	18	1
+	+	9	0
 	+	21	0
-	+	22	0
-	+	23	1
-	+	24	1
-	+	25	1
-	+	16	0
-	+	28	0
-	+	28	0
-	+	28	0
-	+	52	0
+	+	21	0
+	+	21	0
+	+	23	0
 	+	9	25
+	+	10	13
+	+	11	0
+	+	9	0
+	+	9	5
+	+	9	11
+	+	9	28
+	+	9	9
+	+	9	87
+	+	9	0
+	+	9	0
+	+	9	0
+	+	9	0
+	+	9	0
+	+	9	19
+	+	23	0
+	+	12	22
+	+	9	0
+	+	23	0
+	+	23	0
+
+> ~/.dotfiles/zsh/themes/pretzo-powerline.zsh-theme
+	"	164	0
+
+> /usr/local/Cellar/macvim-split-browser/740022/MacVim.app/Contents/Resources/vim/runtime/doc/various.txt
+	"	348	21
 
 > ~/.dotfiles/zsh/themes/solar-powerline.zsh-theme
-	"	140	16
-	^	140	17
-	.	140	16
-	+	153	23
-	+	146	17
-	+	153	0
-	+	155	0
-	+	153	43
-	+	145	18
-	+	145	0
-	+	144	38
-	+	143	16
-	+	144	19
-	+	7	4
-	+	3	0
-	+	2	0
-	+	143	0
-	+	143	0
-	+	130	0
-	+	144	34
-	+	136	0
-	+	153	78
-	+	145	16
-	+	146	16
-	+	143	29
-	+	146	45
-	+	124	8
-	+	146	46
-	+	155	8
-	+	148	0
-	+	152	0
-	+	148	16
-	+	148	10
-	+	148	10
-	+	149	10
-	+	154	0
-	+	155	0
-	+	154	77
-	+	148	31
-	+	125	25
-	+	49	26
-	+	53	29
-	+	57	28
-	+	61	30
-	+	125	51
-	+	148	0
-	+	150	16
-	+	149	16
-	+	148	0
-	+	154	65
-	+	149	19
-	+	148	19
-	+	141	0
-	+	137	17
-	+	148	19
-	+	151	32
-	+	154	83
-	+	138	38
-	+	151	36
-	+	138	33
-	+	137	38
-	+	138	34
-	+	151	38
-	+	138	33
-	+	144	36
-	+	146	47
-	+	151	37
-	+	150	45
-	+	151	37
-	+	138	38
-	+	144	34
-	+	6	21
+	"	176	0
+	^	11	15
+	.	150	0
+	+	19	48
+	+	18	0
+	+	19	48
+	+	165	58
+	+	166	34
+	+	19	48
+	+	19	0
+	+	19	3
+	+	19	33
+	+	19	14
+	+	19	14
+	+	19	27
+	+	19	14
+	+	19	23
+	+	174	59
+	+	161	38
+	+	162	19
+	+	161	20
+	+	144	20
+	+	174	25
+	+	144	20
+	+	146	21
+	+	144	24
+	+	165	17
+	+	144	25
+	+	146	41
+	+	5	19
+	+	18	0
+	+	19	10
+	+	5	15
+	+	19	10
+	+	19	25
+	+	19	18
+	+	19	25
+	+	18	0
+	+	6	35
 	+	7	0
-	+	6	8
-	+	4	27
-	+	5	23
-	+	4	28
-	+	5	35
-	+	130	0
-	+	144	32
-	+	4	27
-	+	5	34
+	+	8	0
+	+	5	15
+	+	7	8
+	+	8	8
+	+	7	17
+	+	8	17
+	+	7	31
+	+	8	31
+	+	19	0
+	+	13	2
+	+	6	36
+	+	7	36
+	+	6	36
+	+	8	22
+	+	7	22
+	+	13	0
+	+	13	2
+	+	16	14
+	+	13	23
+	+	7	25
+	+	8	25
+	+	13	33
+	+	16	22
+	+	6	35
+	+	7	35
+	+	8	36
+	+	11	14
+	+	13	0
+	+	13	0
+	+	9	0
+	+	5	13
+	+	13	0
+	+	16	27
+	+	11	24
+	+	16	23
 	+	6	27
-	+	144	29
-	+	153	26
-	+	144	17
-	+	153	25
-	+	144	54
-	+	153	0
-	+	144	86
-	+	144	68
-	+	89	0
-	+	90	0
-	+	36	38
-	+	37	33
-	+	36	33
-	+	37	38
-	+	153	26
-	+	144	45
-	+	153	26
-	+	144	90
-	+	144	58
-	+	140	16
+	+	7	27
+	+	8	27
+	+	165	39
+	+	166	40
+	+	165	59
+	+	166	63
+	+	13	6
+	+	13	0
+	+	16	25
+	+	13	0
+	+	10	12
+	+	16	25
+	+	9	33
+	+	167	53
+	+	14	23
+	+	13	12
+	+	15	6
+	+	16	6
+	+	16	0
+	+	16	38
+	+	17	3
+	+	12	0
+	+	11	8
+	+	11	14
+	+	11	15
+	+	12	0
+	+	150	0
 
-> ~/.dotfiles/zsh/themes/powerline.zsh-theme
-	"	109	28
-	^	20	0
-	.	4	32
-	+	42	0
-	+	42	0
-	+	42	39
-	+	42	0
-	+	42	0
-	+	42	0
-	+	42	0
-	+	42	0
-	+	42	46
-	+	42	0
-	+	21	0
-	+	20	0
-	+	4	32
+> ~/Documents/Development/tmux-powerline/config/color_palette.sh
+	"	3	12
+	.	10	29
+	+	10	29
+
+> ~/.dotfiles/.gitignore
+	"	1	0
+	^	4	5
+	.	4	4
+	+	1	4
+	+	3	8
+	+	2	2
+	+	1	12
+	+	4	4
+
+> ~/Documents/Projects/powerline.project
+	"	1	0
 
 > /usr/local/Cellar/macvim-split-browser/740022/MacVim.app/Contents/Resources/vim/runtime/doc/options.txt
 	"	6577	22
@@ -776,38 +1148,8 @@ $
 > ~/.dotfiles/zsh/oh-my-zsh.sh
 	"	3	53
 
-> ~/[Vundle] search
-	"	3	0
-	.	1	0
-	+	5	0
-	+	3	0
-	+	1	0
-
 > /usr/local/Cellar/macvim-split-browser/740022/MacVim.app/Contents/Resources/vim/runtime/doc/syntax.txt
 	"	577	0
-
-> ~/[Vundle] Installer
-	"	10	0
-	.	1	0
-	+	157	0
-	+	149	0
-	+	139	0
-	+	129	0
-	+	120	0
-	+	111	0
-	+	101	0
-	+	92	0
-	+	83	0
-	+	74	0
-	+	66	0
-	+	58	0
-	+	50	0
-	+	42	0
-	+	34	0
-	+	26	0
-	+	18	0
-	+	10	0
-	+	1	0
 
 > ~/.dotfiles/zsh/themes/solarized-powerline.zsh-theme
 	"	1	0
@@ -821,21 +1163,6 @@ $
 
 > /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
 	"	120	0
-
-> ~/.dotfiles/zsh/lib/git.zsh
-	"	123	0
-	.	152	0
-	+	151	27
-	+	117	0
-	+	152	0
-	+	152	74
-	+	152	39
-	+	152	8
-	+	152	25
-	+	152	18
-	+	143	0
-	+	152	3
-	+	152	0
 
 > /usr/local/Cellar/macvim-split-browser/740022/MacVim.app/Contents/Resources/vim/runtime/doc/motion.txt
 	"	345	41
@@ -896,16 +1223,6 @@ $
 	.	41	37
 	+	42	0
 	+	41	37
-
-> ~/.dotfiles/.gitignore
-	"	1	0
-	^	4	5
-	.	4	4
-	+	1	4
-	+	3	8
-	+	2	2
-	+	1	12
-	+	4	4
 
 > ~/i_mode_prompt_info
 	"	1	0
@@ -1282,246 +1599,3 @@ $
 
 > ~/Desktop/Vim.png
 	"	1	0
-
-> ~/vim-mavericks.patch
-	"	29	6
-
-> ~/option-window
-	"	1	0
-	.	903	0
-	+	903	0
-
-> ~/gvimrc
-	"	1	0
-
-> /usr/local/Library/Taps/gregkellogg/homebrew-macvim-split-browser/macvim-split-browser.rb
-	"	11	17
-	.	11	17
-	+	11	17
-
-> ~/Documents/Development/macvim-split-browser/macvim-split-browser.rb
-	"	11	17
-	.	11	17
-	+	11	17
-
-> ~/Documents/Development/homebrew-macvimsplitbrowser/macvim-split-browser.rb
-	"	1	0
-	.	10	6
-	+	9	11
-	+	10	6
-
-> /usr/local/Library/Taps/gregkellogg/homebrew-macvimsplitbrowser/macvim-split-browser.rb
-	"	10	6
-	^	10	17
-	.	10	6
-	+	10	6
-	+	11	17
-	+	9	44
-	+	10	6
-	+	11	17
-	+	10	9
-	+	9	44
-	+	10	48
-	+	9	11
-	+	10	6
-
-> ~/Documents/Development/homebrew-macvimsplitbrowser/README.md
-	"	6	21
-	^	6	22
-	.	6	21
-	+	6	21
-
-> /Library/Caches/Homebrew/macvim-split-browser--git/Makefile
-	"	1	0
-
-> /usr/local/Library/Formula/macvim-split-browser.rb
-	"	122	0
-	^	122	0
-	.	123	6
-	+	14	27
-	+	14	27
-	+	14	27
-	+	14	27
-	+	14	45
-	+	14	50
-	+	14	5
-	+	14	41
-	+	8	47
-	+	10	18
-	+	14	2
-	+	11	11
-	+	14	0
-	+	13	4
-	+	14	4
-	+	14	0
-	+	14	0
-	+	14	0
-	+	14	0
-	+	14	0
-	+	14	3
-	+	14	3
-	+	14	3
-	+	14	3
-	+	14	3
-	+	14	0
-	+	14	3
-	+	14	0
-	+	132	0
-	+	132	0
-	+	132	17
-	+	132	0
-	+	132	0
-	+	132	0
-	+	14	0
-	+	14	0
-	+	14	0
-	+	132	0
-	+	131	0
-	+	14	0
-	+	37	0
-	+	34	0
-	+	35	0
-	+	31	0
-	+	31	0
-	+	34	0
-	+	34	0
-	+	23	4
-	+	18	3
-	+	23	2
-	+	18	4
-	+	21	52
-	+	17	44
-	+	22	0
-	+	123	6
-
-> /Library/Caches/Homebrew/macvim-split-browser--git/src/os_mac.h
-	"	18	0
-
-> ~/zshconfig
-	"	1	0
-
-> ~/.dotfiles/vimrc
-	"	43	0
-	^	26	2
-	.	43	0
-	+	4	30
-	+	21	0
-	+	15	0
-	+	17	0
-	+	17	0
-	+	16	0
-	+	17	0
-	+	18	0
-	+	19	0
-	+	20	0
-	+	21	0
-	+	32	0
-	+	31	0
-	+	26	0
-	+	27	0
-	+	28	0
-	+	29	0
-	+	30	0
-	+	31	0
-	+	70	0
-	+	55	0
-	+	56	0
-	+	57	0
-	+	58	0
-	+	59	0
-	+	60	0
-	+	61	0
-	+	62	0
-	+	63	0
-	+	64	0
-	+	65	0
-	+	66	0
-	+	67	0
-	+	68	0
-	+	69	0
-	+	70	0
-	+	82	0
-	+	73	0
-	+	74	0
-	+	75	0
-	+	74	0
-	+	76	0
-	+	77	0
-	+	78	0
-	+	79	0
-	+	80	0
-	+	81	0
-	+	26	1
-	+	42	0
-	+	43	0
-
-> ~/Documents/Development/dotfiles.orig/vimrc
-	"	207	0
-
-> ~/.rvmrc
-	"	1	0
-
-> ~/vimrc
-	"	1	0
-
-> ~/.dotfiles/zshrc
-	"	18	49
-	^	18	50
-	.	18	49
-	+	4	0
-	+	7	0
-	+	8	0
-	+	9	0
-	+	10	0
-	+	11	0
-	+	12	0
-	+	13	0
-	+	5	0
-	+	6	13
-	+	14	0
-	+	15	18
-	+	17	0
-	+	15	0
-	+	14	0
-	+	13	0
-	+	12	0
-	+	11	0
-	+	10	0
-	+	9	0
-	+	8	0
-	+	7	0
-	+	18	115
-	+	18	49
-
-> ~/.vim/.zshrc
-	"	1	0
-
-> ~/.vim/bundle/[Vundle] Installer
-	"	9	0
-	.	1	0
-	+	24	0
-	+	17	0
-	+	9	0
-	+	1	0
-
-> ~/[Vundle] clean
-	"	1	11
-	.	1	0
-	+	5	0
-	+	2	0
-	+	1	0
-
-> ~/.oh-my-zsh/lib/aliases.zsh
-	"	34	0
-	.	35	0
-	+	35	23
-	+	35	28
-	+	35	0
-	+	35	0
-	+	35	0
-	+	35	2
-	+	35	29
-	+	35	10
-	+	35	5
-	+	35	0
-	+	35	0
