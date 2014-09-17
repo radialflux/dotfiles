@@ -6,7 +6,7 @@ ZSH_THEME="solar-powered"
 
 HIST_STAMPS="mm.dd.yyyy"
 
-plugins=(colorize colored-man themes vim-interaction common-aliases vundle git battery brew brew-cask bundler git-extras git-flow git-prompt github rails rake rvm ruby tmux tmuxinator parallels)
+plugins=(colorize colored-man themes vim-interaction common-aliases vundle git battery brew brew-cask bundler git-extras git-flow git-prompt github rails rake rvm ruby tmux tmuxinator cocoapods)
 
 source $ZSH/oh-my-zsh.sh
 
