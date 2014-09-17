@@ -103,13 +103,13 @@ function battery_stat() {
 
 function solar_powered_main() {
   #Left side segments
+  [[ $(whoami) == "root" ]] && root_color=${RED} || root_color=${BASE00}
   if [[ $(current_branch) == "master" ]]; then
     segment_maker ${BLUE} ${WHITE} ${BASE00} ${LEFT} " $(git_segment) "
-    segment_maker ${BASE00} ${WHITE} ${BASE1} ${LEFT} " $(battery_stat) "
+    segment_maker ${root_color} ${WHITE} ${BASE1} ${LEFT} " $(battery_stat) "
     segment_maker ${BASE1} ${BLACK} ${BASE2} ${LEFT} " %m "
     segment_maker ${BASE2} ${BLACK} ${CLEAR} ${LEFT} " %~ "
   else
-    [[ $(whoami) == "root" ]] && root_color=${RED} || root_color=${BASE00}
     segment_maker ${root_color} ${WHITE} ${BASE1} ${LEFT} " $(battery_stat) "
     segment_maker ${BASE1} ${WHITE} ${BASE2} ${LEFT} " %m "
     segment_maker ${BASE2} ${BLACK} ${CLEAR} ${LEFT} " %~ "
