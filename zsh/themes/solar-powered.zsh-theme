@@ -106,10 +106,11 @@ function solar_powered_main() {
   if [[ $(current_branch) == "master" ]]; then
     segment_maker ${BLUE} ${WHITE} ${BASE00} ${LEFT} " $(git_segment) "
     segment_maker ${BASE00} ${WHITE} ${BASE1} ${LEFT} " $(battery_stat) "
-    segment_maker ${BASE1} ${BLACK} ${BASE2} ${LEFT} " %m "\n
+    segment_maker ${BASE1} ${BLACK} ${BASE2} ${LEFT} " %m "
     segment_maker ${BASE2} ${BLACK} ${CLEAR} ${LEFT} " %~ "
   else
-    segment_maker ${BASE00} ${WHITE} ${BASE1} ${LEFT} " $(battery_stat) "
+    [[ $(whoami) == "root" ]] && root_color=${RED} || root_color=${BASE00}
+    segment_maker ${root_color} ${WHITE} ${BASE1} ${LEFT} " $(battery_stat) "
     segment_maker ${BASE1} ${WHITE} ${BASE2} ${LEFT} " %m "
     segment_maker ${BASE2} ${BLACK} ${CLEAR} ${LEFT} " %~ "
   fi
@@ -124,6 +125,7 @@ function solar_powered_main_right() {
 prompt_powerline_precmd() {
   PROMPT="$(solar_powered_main) "
   RPROMPT="$(solar_powered_main_right)"
+  RPROMPT4="$(solar_powered_main_right)"
   POWERLINE_GIT_INFO=" %F{blue}%K{230}"$'\ue0b0'" %F{230}%F{black}%K{230}"$'$(git_prompt_status)%F{230}'
   RVM_CURRENT_RUBY="$(rvm_prompt_info | tr -d ')(') "
 }
