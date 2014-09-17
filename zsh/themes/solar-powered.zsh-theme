@@ -71,7 +71,7 @@ function segment_maker() {
 }
 
 funtion rvm_status() {
-  [[ ${RVM_CURRENT_RUBY} != "" ]] && echo ${RVM_CURRENT_RUBY} || echo "SYSTEM RUBY"
+  [[ ${RVM_CURRENT_RUBY} =~ [*ruby*] ]] && echo ${RVM_CURRENT_RUBY} || echo "SYSTEM RUBY"
 }
 
 function git_segment() {
