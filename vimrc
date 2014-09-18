@@ -1,4 +1,5 @@
-set nocompatible     
+let b:did_ftplugin = 1
+set nocompatible
 syntax enable
 set backspace=indent,eol,start
 set guioptions=R
@@ -8,10 +9,10 @@ set number
 execute pathogen#infect()
 set nobackup
 set nowritebackup
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set history=50
+set ruler
+set showcmd
+set incsearch
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -27,8 +28,6 @@ set expandtab
 set smartindent
 filetype plugin indent on
 
-autocmd BufNewFile,BufRead *.zsh-theme set syntax=zsh
-autocmd BufNewFile,BufRead *.conf set syntax=sh
 
 " \ is the leader character
 let mapleader = ","
@@ -43,15 +42,20 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ZenCoding.vim'
+Plugin 'filetype-completion.vim'
+Plugin 'filetype.vim'
+Plugin 'zshr.vim'
+Bundle 'Shougo/neocomplete'
+Bundle 'Shougo/neosnippet'
+Bundle 'Shougo/neosnippet-snippets'
 
 call vundle#end()
+let g:neocomplete#enable_at_startup = 1
 
-
-" set guifont=Monaco\ for\ Powerline:h16
 set guifont=Sauce\ Code\ Powerline:h16
 
 " ------------------------------------------------------------------
@@ -77,7 +81,6 @@ set noshowmode
 set encoding=utf-8
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
-set term=xterm-256color
 set termencoding=utf-8
 " +-----------------------------------------+
 " | End Powerline Config                    |
@@ -114,10 +117,27 @@ map <D-9> 9gt
 map <D-0> :tablast<CR>
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
-an 10.290 File.Toggle\ NerdTree :NERDTreeToggle<CR> 
+an 10.290 File.Toggle\ NerdTree :NERDTreeToggle<CR>
 
 set go-=T
 
+" +-----------------------------------------+
+" | Folding and FileTypes                   |
+" +-----------------------------------------+
+set foldcolumn=2
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+
+augroup vimrc
+  au BufNewFile,BufRead *.zsh-theme set syntax=zsh
+  au BufNewFile,BufRead *.conf set syntax=sh
+  au BufReadPre * setlocal foldmethod=indent
+  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+augroup END
+
+
 if has("gui_macvim")
-	  let macvim_hig_shift_movement = 1
+	let macvim_hig_shift_movement = 1
+else
+  set term=xterm-256color
 endif

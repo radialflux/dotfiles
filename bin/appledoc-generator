@@ -1,0 +1,10 @@
+if [[ $# != 3 ]]; then
+  echo "\nUsage:  appledoc-generator [project name] [path to project] [where to put the docs]\n"
+else
+  appledoc --project-name $1 --project-company "Greg" --company-id tools.makr\
+  --ignore ".m" --explicit-crossref --keep-undocumented-objects\
+  --keep-undocumented-members --no-repeat-first-par --no-warn-missing-arg\
+  --no-warn-undocumented-object --no-warn-undocumented-member --no-warn-empty-description\
+  --docset-bundle-id $1 --docset-bundle-name $1 --keep-intermediate-files --output $3 $2
+  fi
+

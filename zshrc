@@ -1,18 +1,21 @@
 # Path to your oh-my-zsh installation.
 export TERM=xterm-256color
 export ZSH=$HOME/.zsh
+export ZLE_RPROMPT_INDENT=0 
 
 ZSH_THEME="solar-powered"
 
 HIST_STAMPS="mm.dd.yyyy"
 
-plugins=(colorize colored-man themes vim-interaction common-aliases vundle git battery brew brew-cask bundler git-extras git-flow git-prompt github rails rake rvm ruby tmux tmuxinator cocoapods)
+plugins=(colorize colored-man themes vim-interaction common-aliases\
+vundle git battery brew brew-cask git-extras git-flow git-prompt github\
+rails rake rvm ruby tmux tmuxinator cocoapods)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:."
-export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/.bin"
 #
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
@@ -25,6 +28,7 @@ export ARCHFLAGS="-arch x86_64"
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+alias mvim="/Applications/MacVim.app/Contents/MacOS/Vim"
 alias vi="/Applications/MacVim.app/Contents/MacOS/MacVim"
 alias v="/Applications/MacVim.app/Contents/MacOS/Vim"
 alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
@@ -32,7 +36,9 @@ alias zshconfig="mvim ~/.zshrc"
 alias dev="cd ~/Documents/Development"
 alias gs='git status'
 alias dots='cd ~/.dotfiles'
-
+alias sysconfigs="vi -O ~/Documents/Projects/sysconfigs.session"
+alias mdfind='mdfind -interpret $1'
+alias clear='osascript -e 'tell application "System Events" to keystroke "k" using command down''
 zmodload zsh/complist
 autoload -U compinit && compinit
 
@@ -54,23 +60,8 @@ zstyle ':completion:*:manuals.(^1*)' insert-sections true
 zstyle ':completion:*' menu select
 zstyle ':completion:*' verbose yes
 
-if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
-       else
-   export EDITOR='mvim'
-fi
-
-[[ -n "$SSH_CLIENT" ]] || export DEFAULT_USER="Greg"
-
 ############################################################################
 # Powerline Config goes here                                               #
 ############################################################################
-#powerline-daemon -q
-# . /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-
-export POWERLINE_DATE_FORMAT=""
-export POWERLINE_FULL_CURRENT_PATH="relative"
-export POWERLINE_RIGHT_A='rvm'
-export POWERLINE_RIGHT_B="date"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
