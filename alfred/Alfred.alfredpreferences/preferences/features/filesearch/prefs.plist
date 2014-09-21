@@ -4,6 +4,12 @@
 <dict>
 	<key>ignoreBookmarks</key>
 	<false/>
+	<key>ignoreCalendar</key>
+	<false/>
+	<key>ignoreContacts</key>
+	<false/>
+	<key>ignoreEmails</key>
+	<false/>
 	<key>ignoreHistory</key>
 	<false/>
 	<key>limit</key>

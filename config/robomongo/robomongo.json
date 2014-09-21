@@ -1,0 +1,14 @@
+{
+ "autoExpand" : false,
+ "batchSize" : 50,
+ "connections" : [
+
+ ],
+ "disableConnectionShortcuts" : false,
+ "loadMongoRcJs" : false,
+ "style" : "",
+ "timeZone" : 0,
+ "uuidEncoding" : 0,
+ "version" : "1.0",
+ "viewMode" : 1
+}

@@ -1,3 +1,4 @@
+
 let b:did_ftplugin = 1
 set nocompatible
 syntax enable
@@ -12,6 +13,7 @@ set ruler
 set showcmd
 set incsearch
 set hlsearch
+set modeline
 
 " +-----------------------------------------+
 " | VAM Config                              |
@@ -71,7 +73,7 @@ fun! SetupVAM()
   " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
   " Also See "plugins-per-line" below
 
-  ActivateAddons neocomplete neosnippet neosnippet-snippets
+  ActivateAddons neocomplete neosnippet neosnippet-snippets ftpluginruby%303
   ActivateAddons sparkup Solarized vim-snippets snipmate surround 
   " Addons are put into plugin_root_dir/plugin-name directory
   " unless those directories exist. Then they are activated.
@@ -93,6 +95,7 @@ set shiftwidth=2
 set expandtab
 set smartindent
 filetype plugin indent on
+filetype plugin on
 
 
 " \ is the leader character
@@ -102,7 +105,7 @@ let mapleader = ","
 
 let g:neocomplete#enable_at_startup = 1
 
-set guifont=Sauce\ Code\ Powerline:h16
+set guifont=Sauce\ Code\ Powerline:h13
 
 " ------------------------------------------------------------------
 " Solarized Colorscheme Config
@@ -153,23 +156,33 @@ let g:fuf_splitPathMatching=1
 " | Keyboard Mappings                       |
 " +-----------------------------------------+
 
-" Append modeline after last line in buffer.
-" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
-" files.
+if has("user_commands")
+    command! -bang -nargs=? -complete=file E e<bang> <args>
+    command! -bang -nargs=? -complete=file W w<bang> <args>
+    command! -bang -nargs=? -complete=file Wq wq<bang> <args>
+    command! -bang -nargs=? -complete=file WQ wq<bang> <args>
+    command! -bang Wa wa<bang>
+    command! -bang WA wa<bang>
+    command! -bang Q q<bang>
+    command! -bang QA qa<bang>
+    command! -bang Qa qa<bang>
+  endif
+
 function! AppendModeline()
-  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
-        \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+  let l:modeline = printf(" vim: set ft=%d ts=%d sw=%d tw=%d %set :",
+        \ &filetype, &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
   let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
-  call append(line("$"), l:modeline)
+  call append(line("^"), l:modeline)
 endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+amenu Edit.Insert\ &modeline <C-\><C-N>ggOvim:ff=unix ts=4 ss=4<CR>vim60:fdm=marker<Esc>
 
 map <D-S-]> gt
 map <D-S-[> gT
 map <D-1> 1gt
 map <D-2> 2gt
 map <D-3> 3gt
-map <D-4> 4gt
+map <D-4> 4g
 map <D-5> 5gt
 map <D-6> 6gt
 map <D-7> 7gt
@@ -188,13 +201,11 @@ set go-=T
 set foldcolumn=2
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
-
-augroup vimrc
-  au BufNewFile,BufRead *.zsh-theme set syntax=zsh
-  au BufNewFile,BufRead *.conf set syntax=sh
-  au BufReadPre * setlocal foldmethod=indent
-  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
-augroup END
+au BufNewFile,BufRead *.zsh setlocal filetype=zsh
+au BufNewFile,BufRead *.zsh-theme set syntax=zsh
+au BufNewFile,BufRead *.conf set syntax=sh
+au BufReadPre * setlocal foldmethod=indent
+au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
 
 
 if has("gui_macvim")

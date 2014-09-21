@@ -1,6 +1,5 @@
-# vim:ft=zsh ts=2 sw=2 sts=2
 
-load_glyphs () {
+load_glyphs() {
   # Solarized colors
   BASE03=234 
   BASE02=235 
@@ -15,18 +14,18 @@ load_glyphs () {
   RED=160 
   MAGENTA=125 
   VIOLET=61 
-  BLUE=blue 
+  BLUE=33 
   CYAN=37 
-  GREEN=green 
-  BLACK=$BASE02
-  WHITE=$BASE3
+  GREEN=170 
+  BLACK=235
+  WHITE=254
   CLEAR=0
 
   # Symbols
-  R_SEGMENT_SEPARATOR="\ue0b2"
-  L_SEGMENT_SEPARATOR="\ue0b0"
-  L_DEVIDER=""
-  R_DEVIDER=
+  RIGHT_SEG_SEP=" "
+  LEFT_SEG_SEP=" "
+  L_DIVIDER=""
+  R_DIVIDER=""
   PLUSMINUS="\u00b1"
   BRANCH="\ue0a0"
   DETACHED="\u27a6"
@@ -34,83 +33,114 @@ load_glyphs () {
   LIGHTNING="\u26a1"
   GEAR="\u2699"
   BULLET="\u233e"
+
+  # Misc variables
+  LEFT="LEFT"
+  RIGHT="RIGHT"
+  TOP="TOP"
+  BOTTOM="BOTTOM"
 }
 
-bottom_segment () {
-  local bg fg nbg nfg side info
-  bg=%K{$1} ; fg=%F{$2} ; nbg=%K{$3} ; nfg=%F{$1} ; side=$4 ; info=$5 ; dir=$6 
+solar_hostname() {
+  SOLAR_HOSTNAME=${${(%):-%n@%m}}
+  SOLAR_HOSTNAME_LEN="$(( ${#SOLAR_HOSTNAME} + 1 )) "
+}
 
-  if [[ ${side} == "left" && ${dir} == "bottom" ]]; then
-    seg=$L_SEGMENT_SEPARATOR 
-    print -n "%{$bg$fg%}"
-    print -n "${info}%{%f%k%}%{reset_color%}"
-    print -n "${nbg}${nfg}${seg}%{%k%f%}%{reset_color%}"
-    return 0
-  elif [[ ${side} == "right" && ${dir} == "bottom" ]] then
-    seg=$R_SEGMENT_SEPARATOR
-    print -n "%{${nbg}${nfg}%}${seg}%{%f%k%}%{reset_color%}"
-    print -n "%{$bg$fg%}"
-    print -n "${info:u}%f%k"
-    return 0
+solar_path() {
+  SOLAR_PATH=${${(%):-%~}}   
+  SOLAR_PATH_LEN=" $(( ${#SOLAR_PATH} + 3 ))  "
+}
+
+solar_rbenv() {
+  SOLAR_RBENV=" $(rbenv version-name) "
+  SOLAR_RBENV_LEN=" $(( ${#SOLAR_RBENV} + 2 )) "
+}
+
+solar_git() {
+  SOLAR_GIT=" git data "
+  SOLAR_GIT_LEN=" $(( ${#SOLAR_GIT} + 2 )) "
+}
+
+solar_bat() {
+  local param
+  param=$(battery_pct_prompt | cut -d% -f3 | tr -d '}[%')
+
+  case ${param} in
+    <1-20>)
+      SOLAR_BAT="\u25cb"
+      ;;
+    <21-40>)
+      SOLAR_BAT="\u25d4"
+      ;;
+    <41-60>)
+     SOLAR_BAT="\u25d1"
+     ;;
+    <61-80>)
+     SOLAR_BAT="\u25d5"
+     ;;
+       *∞*)
+     SOLAR_BAT="\u2622"
+     ;;
+    *)
+     SOLAR_BAT="\u25cf"
+     ;;
+  esac
+  SOLAR_BAT_LEN=3
+}
+
+build_segment() {
+  local bg=$1 fg=$2 nbg=$3 nfg=$1 info=$4 side=$5
+  
+  if [[ ${side} == ${LEFT} ]]; then
+    print -nP ${info}
+    print -nP \$${side}_SEG_SEP
+  elif [[ ${side} == ${RIGHT} ]]; then
+    print -nP \$${side}_SEG_SEP
+    print -nP ${info}
   else
-    print -n "$bg"
-    print -n "${info}%k"
+    padding=$4
+    print -nP "%{%K{${bg}}%}"
+    print -nP "${(l:(${padding})::.:)}%{%k%{${color_reset}%}%}"
   fi
 }
 
+solar_powered_main() {
+  solar_path
+  solar_hostname
+  solar_bat
+  solar_git
+  solar_rbenv
 
-solar_powered_top_left () {
-  get_path_array "$@"
-  top_segment_maker ${ORANGE} "${(l:${ZSH_HOSTNAME_LEN}:: :)}"
-  top_segment_maker ${BASE2} "${(l:${ZSH_PATH_LEN}:: :)}"
+  TERM_WIDTH=$(( ${COLUMNS} - ( ${SOLAR_BAT_LEN} + ${SOLAR_HOSTNAME_LEN} + ${SOLAR_PATH_LEN} + ${SOLAR_GIT_LEN} + ${SOLAR_RBENV_LEN} )))
+
+  SOLAR_PROMPT_HOSTNAME=$(build_segment ${BLUE} ${WHITE} ${BASE0} "${SOLAR_HOSTNAME:l}" ${LEFT})
+  SOLAR_PROMPT_PATH=$(build_segment ${GREEN} ${WHITE} ${BASE0} " ${SOLAR_PATH}" ${LEFT})
+  SOLAR_PROMPT_BAT=$(build_segment ${BLUE} ${WHITE} ${BASE0} "${SOLAR_BAT}" ${RIGHT})
+  SOLAR_PROMPT_GIT=$(build_segment ${ORANGE} ${WHITE} ${BASE0} "${SOLAR_GIT}" ${RIGHT})
+  SOLAR_PROMPT_RBENV=$(build_segment ${BLUE} ${WHITE} ${BASE0} "${SOLAR_RBENV}" ${RIGHT})
+  SOLAR_PROMPT_HOSTNAME_PAD=$(build_segment ${BLUE} ${WHITE} ${BASE0} ${SOLAR_HOSTNAME_LEN})
+  SOLAR_PROMPT_GIT_PAD=$(build_segment ${BASE0} ${WHITE} ${BASE0} ${SOLAR_GIT_LEN})
+  SOLAR_PROMPT_PATH_PAD=$(build_segment ${BASE0} ${BLACK} ${BASE0} ${SOLAR_PATH_LEN})
+  SOLAR_PROMPT_BAT_PAD=$(build_segment ${BASE01} ${WHITE} ${BASE0} ${SOLAR_BAT_LEN})
+  SOLAR_PROMPT_RBENV_PAD=$(build_segment ${BLUE} ${WHITE} ${BASE0} ${SOLAR_RBENV_LEN})
+  SOLAR_PROMPT_TERMINAL_PAD=$(build_segment ${CLEAR} ${WHITE} ${BASE0} ${TERM_WIDTH})
+
+  # Gather widths
+
+} 
+
+solar_powered_precmd() {
+  solar_powered_main
+  PROMPT=$'${SOLAR_PROMPT_HOSTNAME_PAD}${SOLAR_PROMPT_PATH_PAD}${SOLAR_PROMPT_TERMINAL_PAD}${SOLAR_PROMPT_GIT_PAD}${SOLAR_PROMPT_RBENV_PAD}${SOLAR_PROMPT_BAT_PAD}\n${SOLAR_PROMPT_HOSTNAME}${SOLAR_PROMPT_PATH} '
+
+  RPROMPT=$'${SOLAR_PROMPT_GIT}${SOLAR_PROMPT_RBENV}${SOLAR_PROMPT_BAT}'
 }
 
-solar_powered_top_right () {
-  top_segment_maker ${BASE2} ${CLEAR} " "
-  top_segment_maker ${BASE0} ${BASE2} " "
-}
-
-solar_powered_bottom_left () {
-  print ${ZSH_HOSTNAME} 
-}
-
-get_host () {
-  ZSH_HOSTNAME=${${(%):-%n@%m}}
-  ZSH_HOSTNAME_LEN=${#${(%):-%n@%m}}
-}
-
-get_path () {
-  ZSH_PATH=${${(%):-%~}}   
-  ZSH_PATH_LEN=${#${(%):-%~}}
-}
-
-
-
-error() {
-  echo "Not enough arguments\n"
-  return 1    
-}
-
-solar_powered_main () {
-  get_host
-  get_path
-  solar_powered_bottom_left
-}
-
-solar_powered_precmd () {
-  PROMPT=$'$(solar_powered_main) '
-}
-
-solar_powered_setup () {
-
+solar_powered_setup() {
+  load_glyphs
   autoload -Uz add-zsh-hook
   prompt_opts=(cr subst percent)
   add-zsh-hook precmd solar_powered_precmd
-
-  zstyle ':vcs_info:*' enable git
-  zstyle ':vcs_info:*' check-for-changes false
-  zstyle ':vcs_info:git*' formats '%b'
-  zstyle ':vcs_info:git*' actionformats '%b (%a)'
 }
 
-solar_powered_setup "$@"
+solar_powered_setup
