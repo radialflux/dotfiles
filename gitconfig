@@ -8,6 +8,7 @@
 	default = simple
 [core]
 	excludesfile = /opt/boxen/config/git/gitignore
+	editor = /Applications/MacVim.app/Contents/MacOS/MacVim
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

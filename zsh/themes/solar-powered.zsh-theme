@@ -1,31 +1,30 @@
 
 load_glyphs() {
   # Solarized colors
-  BASE03=234 
-  BASE02=235 
-  BASE01=240 
-  BASE00=241 
-  BASE0=244 
-  BASE1=245 
-  BASE2=254 
-  BASE3=230 
-  YELLOW=136 
-  ORANGE=166 
-  RED=160 
-  MAGENTA=125 
-  VIOLET=61 
-  BLUE=33 
-  CYAN=37 
-  GREEN=170 
-  BLACK=235
-  WHITE=254
-  CLEAR=0
+  BASE03="%{$FG[234]%}"
+  BASE02="%{$FG[235]%}"
+  BASE01="%{$fg[darkgray]%}"
+  BASE00="%{$FG[241]%}"
+  BASE0="%{$FG[244]%}"
+  BASE1="%{$fg[gray]%}"
+  BASE2="%{$fg[white]%}" 
+  BASE3="%{$FG[230]%}"
+  YELLOW="%{$fg[yellow]%}"
+  ORANGE="%{$FG[166]%}"
+  RED="%{$fg[red]%}"
+  MAGENTA="%{$fg[magenta]%}"
+  VIOLET="%{$FG[61]%}"
+  BLUE="%{$fg[blue]%}"
+  CYAN="%{$fg[cyan]%}"
+  GREEN="%{$fg[green]%}"
+  BLACK="%{$fg[black]%}"
+  WHITE="%{$fg[white]%}"
+  CLEAR="%{$FG[0]%}"
+  RESET="%{${reset_color}%}"
 
   # Symbols
-  RIGHT_SEG_SEP=" "
-  LEFT_SEG_SEP=" "
-  L_DIVIDER=""
-  R_DIVIDER=""
+  RIGHT_SEG_SEP=""
+  LEFT_SEG_SEP=""
   PLUSMINUS="\u00b1"
   BRANCH="\ue0a0"
   DETACHED="\u27a6"
@@ -33,114 +32,69 @@ load_glyphs() {
   LIGHTNING="\u26a1"
   GEAR="\u2699"
   BULLET="\u233e"
-
-  # Misc variables
-  LEFT="LEFT"
-  RIGHT="RIGHT"
-  TOP="TOP"
-  BOTTOM="BOTTOM"
 }
 
 solar_hostname() {
-  SOLAR_HOSTNAME=${${(%):-%n@%m}}
-  SOLAR_HOSTNAME_LEN="$(( ${#SOLAR_HOSTNAME} + 1 )) "
+  SOLAR_HOSTNAME="${${(%):-%n@%m}} "
 }
 
 solar_path() {
-  SOLAR_PATH=${${(%):-%~}}   
-  SOLAR_PATH_LEN=" $(( ${#SOLAR_PATH} + 3 ))  "
+  SOLAR_PATH="${${(%):-%~}} "
 }
 
-solar_rbenv() {
-  SOLAR_RBENV=" $(rbenv version-name) "
-  SOLAR_RBENV_LEN=" $(( ${#SOLAR_RBENV} + 2 )) "
+function solar_rbenv() {
+  SOLAR_RBENV=" $(rbenv version-name)"
+  #print ${SOLAR_RBENV} 
 }
 
-solar_git() {
-  SOLAR_GIT=" git data "
-  SOLAR_GIT_LEN=" $(( ${#SOLAR_GIT} + 2 )) "
+function solar_git() {
+  SOLAR_GIT="$(git_cwd_info_raw) "
+  # print ${SOLAR_GIT}
 }
 
 solar_bat() {
+  SOLAR_BAT="[48%\] ▄ "
+#  SOLAR_BAT=" $(battery) "
+
+ }
+
+
+#  I need to get the size before formating is applied, there has got to be a better way
+solar_padding() {
   local param
-  param=$(battery_pct_prompt | cut -d% -f3 | tr -d '}[%')
-
-  case ${param} in
-    <1-20>)
-      SOLAR_BAT="\u25cb"
-      ;;
-    <21-40>)
-      SOLAR_BAT="\u25d4"
-      ;;
-    <41-60>)
-     SOLAR_BAT="\u25d1"
-     ;;
-    <61-80>)
-     SOLAR_BAT="\u25d5"
-     ;;
-       *∞*)
-     SOLAR_BAT="\u2622"
-     ;;
-    *)
-     SOLAR_BAT="\u25cf"
-     ;;
-  esac
-  SOLAR_BAT_LEN=3
+  param=$1
+  while (( i++ < ${param} )) { SOLAR_PADDING+="."; }
+  #print ${SOLAR_PADDING}
 }
 
-build_segment() {
-  local bg=$1 fg=$2 nbg=$3 nfg=$1 info=$4 side=$5
+
+
+solar_main() {
+  # initialize functions so we can calc term width
+  local param
   
-  if [[ ${side} == ${LEFT} ]]; then
-    print -nP ${info}
-    print -nP \$${side}_SEG_SEP
-  elif [[ ${side} == ${RIGHT} ]]; then
-    print -nP \$${side}_SEG_SEP
-    print -nP ${info}
-  else
-    padding=$4
-    print -nP "%{%K{${bg}}%}"
-    print -nP "${(l:(${padding})::.:)}%{%k%{${color_reset}%}%}"
-  fi
-}
-
-solar_powered_main() {
-  solar_path
-  solar_hostname
-  solar_bat
-  solar_git
-  solar_rbenv
-
-  TERM_WIDTH=$(( ${COLUMNS} - ( ${SOLAR_BAT_LEN} + ${SOLAR_HOSTNAME_LEN} + ${SOLAR_PATH_LEN} + ${SOLAR_GIT_LEN} + ${SOLAR_RBENV_LEN} )))
-
-  SOLAR_PROMPT_HOSTNAME=$(build_segment ${BLUE} ${WHITE} ${BASE0} "${SOLAR_HOSTNAME:l}" ${LEFT})
-  SOLAR_PROMPT_PATH=$(build_segment ${GREEN} ${WHITE} ${BASE0} " ${SOLAR_PATH}" ${LEFT})
-  SOLAR_PROMPT_BAT=$(build_segment ${BLUE} ${WHITE} ${BASE0} "${SOLAR_BAT}" ${RIGHT})
-  SOLAR_PROMPT_GIT=$(build_segment ${ORANGE} ${WHITE} ${BASE0} "${SOLAR_GIT}" ${RIGHT})
-  SOLAR_PROMPT_RBENV=$(build_segment ${BLUE} ${WHITE} ${BASE0} "${SOLAR_RBENV}" ${RIGHT})
-  SOLAR_PROMPT_HOSTNAME_PAD=$(build_segment ${BLUE} ${WHITE} ${BASE0} ${SOLAR_HOSTNAME_LEN})
-  SOLAR_PROMPT_GIT_PAD=$(build_segment ${BASE0} ${WHITE} ${BASE0} ${SOLAR_GIT_LEN})
-  SOLAR_PROMPT_PATH_PAD=$(build_segment ${BASE0} ${BLACK} ${BASE0} ${SOLAR_PATH_LEN})
-  SOLAR_PROMPT_BAT_PAD=$(build_segment ${BASE01} ${WHITE} ${BASE0} ${SOLAR_BAT_LEN})
-  SOLAR_PROMPT_RBENV_PAD=$(build_segment ${BLUE} ${WHITE} ${BASE0} ${SOLAR_RBENV_LEN})
-  SOLAR_PROMPT_TERMINAL_PAD=$(build_segment ${CLEAR} ${WHITE} ${BASE0} ${TERM_WIDTH})
-
-  # Gather widths
-
-} 
-
-solar_powered_precmd() {
-  solar_powered_main
-  PROMPT=$'${SOLAR_PROMPT_HOSTNAME_PAD}${SOLAR_PROMPT_PATH_PAD}${SOLAR_PROMPT_TERMINAL_PAD}${SOLAR_PROMPT_GIT_PAD}${SOLAR_PROMPT_RBENV_PAD}${SOLAR_PROMPT_BAT_PAD}\n${SOLAR_PROMPT_HOSTNAME}${SOLAR_PROMPT_PATH} '
-
-  RPROMPT=$'${SOLAR_PROMPT_GIT}${SOLAR_PROMPT_RBENV}${SOLAR_PROMPT_BAT}'
+  for seg_width in solar_bat solar_git solar_path solar_rbenv solar_hostname; do
+    eval $seg_width
+    (( param = $param + ${#${(e)seg_width:+\$$seg_width:u}} ))
+   # while (( i++ < ${param} )) { $seg_width:u_PAD+="+"; }
+  done
+  print $param
+  solar_padding $((( ${COLUMNS} - ${param} )))
 }
 
 solar_powered_setup() {
   load_glyphs
+  typeset -A hash
+  autoload -U colors && colors
   autoload -Uz add-zsh-hook
   prompt_opts=(cr subst percent)
   add-zsh-hook precmd solar_powered_precmd
 }
 
-solar_powered_setup
+solar_powered_precmd() {
+  solar_main "$@"
+  PROMPT='${SOLAR_HOSTNAME_PAD}${SOLAR_HOSTNAME}${SOLAR_PATH}'
+  RPROMPT='${SOLAR_GIT}${SOLAR_RBENV}${SOLAR_BAT}'
+}
+
+solar_powered_setup "$@"

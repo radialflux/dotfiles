@@ -72,9 +72,8 @@ fun! SetupVAM()
   call vam#ActivateAddons([], {'auto_install' : 0})
   " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
   " Also See "plugins-per-line" below
-
-  ActivateAddons neocomplete neosnippet neosnippet-snippets ftpluginruby%303
-  ActivateAddons sparkup Solarized vim-snippets snipmate surround 
+  ActivateAddons neocomplete neosnippet neosnippet-snippets tube Conque_Shell
+  ActivateAddons sparkup Solarized vim-snippets snipmate surround
   " Addons are put into plugin_root_dir/plugin-name directory
   " unless those directories exist. Then they are activated.
   " Activating means adding addon dirs to rtp and do some additional
