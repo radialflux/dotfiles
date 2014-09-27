@@ -1,0 +1,6 @@
+" Overwrite this file with whatever you want. This will be executed before
+" loading any of the stock bundles/settings.
+" - You can load bundles using `NeoBundle` commands here.
+au BufRead,BufNewFile *.zsh-theme set filetype=zsh 
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber

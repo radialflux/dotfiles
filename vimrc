@@ -1,214 +1,172 @@
+" ================================================
+"         .__           ___.
+"  ___  __|__|  _____   \_ |__    ____  ___  ___
+"  \  \/ /|  | /     \   | __ \  /  _ \ \  \/  /
+"   \   / |  ||  Y Y  \  | \_\ \(  <_> ) >    <
+"    \_/  |__||__|_|  /  |___  / \____/ /__/\_ \
+"                   \/       \/               \/
+" ================================================
+"
+"
+" See `README.md` for features and shortcuts
+" Additional features not mentioned in README:
+"
+" Spell Check:
+" Command+shift+p to toggle spell check on comments (underlines in red).
+"
+" Mac ProTips:
+"  To further improve the text rendering on Mac OSX:
+"  1. From the shell: defaults write org.vim.MacVim MMCellWidthMultiplier 0.9
+"  2. Opens all files from other apps in vert split defaults write
+"  org.vim.MacVim MMVerticalSplit YES
+"  3. If when changing monitors, your fonts go from nice and thin to ugly and
+"  bold: This should fix it:
+"   defaults -currentHost write -globalDomain AppleFontSmoothing -int 1
+"
+" Cygwin:
+" Tested and should work. AutoHotkey exist that provide an identical experience
+" to the Mac OSX experience.
+"
+" Bundle System:
+" Uses the NeoBundle system. Add bundles to ~/.vim/bundlesVimRc with:
+" NeoBundle "git://github.com/youruser/something.git"
+" Open New Vim Windows and it will ask you to install.
+" Close and then reopen the vim window.
 
-let b:did_ftplugin = 1
-set nocompatible
-syntax enable
-set backspace=indent,eol,start
-set guioptions=R
-set guioptions=e
-set number
+filetype plugin on " Required for NeoBundle and also good.
+filetype indent on " Required for NeoBundle and also good.
+if has('vim_starting')
+  set nocompatible               " Be iMproved
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+
+if has('gui_win32')
+  set rtp+=~/.vim
+endif
+
+
+
+if filereadable(expand("~/.vim/vimrc.custom.before"))
+  source ~/.vim/vimrc.custom.before
+endif
+
+set noswapfile     " Don't make backups.
+set nowritebackup " Even if you did make a backup, don't keep it around.
 set nobackup
-set nowritebackup
-set history=50
-set ruler
-set showcmd
-set incsearch
-set hlsearch
-set modeline
 
-" +-----------------------------------------+
-" | VAM Config                              |
-" +-----------------------------------------+
-
-fun! EnsureVamIsOnDisk(plugin_root_dir)
-  " windows users may want to use http://mawercer.de/~marc/vam/index.php
-  " to fetch VAM, VAM-known-repositories and the listed plugins
-  " without having to install curl, 7-zip and git tools first
-  " -> BUG [4] (git-less installation)
-  let vam_autoload_dir = a:plugin_root_dir.'/vim-addon-manager/autoload'
-  if isdirectory(vam_autoload_dir)
-    return 1
-  else
-    if 1 == confirm("Clone VAM into ".a:plugin_root_dir."?","&Y\n&N")
-      " I'm sorry having to add this reminder. Eventually it'll pay off.
-      call confirm("Remind yourself that most plugins ship with ".
-                  \"documentation (README*, doc/*.txt). It is your ".
-                  \"first source of knowledge. If you can't find ".
-                  \"the info you're looking for in reasonable ".
-                  \"time ask maintainers to improve documentation")
-      call mkdir(a:plugin_root_dir, 'p')
-      execute '!git clone --depth=1 git://github.com/MarcWeber/vim-addon-manager '.
-          \       shellescape(a:plugin_root_dir, 1).'/vim-addon-manager'
-      " VAM runs helptags automatically when you install or update 
-      " plugins
-      exec 'helptags '.fnameescape(a:plugin_root_dir.'/vim-addon-manager/doc')
-    endif
-    return isdirectory(vam_autoload_dir)
-  endif
-endfun
-
-fun! SetupVAM()
-  " Set advanced options like this:
-  " let g:vim_addon_manager = {}
-  " let g:vim_addon_manager.key = value
-  "     Pipe all output into a buffer which gets written to disk
-  " let g:vim_addon_manager.log_to_buf =1
-
-  " Example: drop git sources unless git is in PATH. Same plugins can
-  " be installed from www.vim.org. Lookup MergeSources to get more control
-  " let g:vim_addon_manager.drop_git_sources = !executable('git')
-  " let g:vim_addon_manager.debug_activation = 1
-
-  " VAM install location:
-  let c = get(g:, 'vim_addon_manager', {})
-  let g:vim_addon_manager = c
-  let c.plugin_root_dir = expand('$HOME/.vim/vim-addons', 1)
-  if !EnsureVamIsOnDisk(c.plugin_root_dir)
-    echohl ErrorMsg | echomsg "No VAM found!" | echohl NONE
-    return
-  endif
-  let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
-
-  " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons([], {'auto_install' : 0})
-  " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
-  " Also See "plugins-per-line" below
-  ActivateAddons neocomplete neosnippet neosnippet-snippets tube Conque_Shell
-  ActivateAddons sparkup Solarized vim-snippets snipmate surround
-  " Addons are put into plugin_root_dir/plugin-name directory
-  " unless those directories exist. Then they are activated.
-  " Activating means adding addon dirs to rtp and do some additional
-  " magic
-
-  " How to find addon names?
-  " - look up source from pool
-  " - (<c-x><c-p> complete plugin names):
-  " You can use name rewritings to point to sources:
-  "    ..ActivateAddons(["github:foo", .. => github://foo/vim-addon-foo
-  "    ..ActivateAddons(["github:user/repo", .. => github://user/repo
-  " Also see section "2.2. names of addons and addon sources" in VAM's documentation
-endfun
-call SetupVAM()
-
+syntax on
+set virtualedit=block
 set tabstop=2
-set shiftwidth=2
+set nonumber
+set noswapfile
+
+set mouse=a
+set nospell
+set ic
+set scs
+
+" TODO: Set up mappings to toggle between text mode and code mode.
+" Editing code
+set nowrap
+set wrapmargin=0
+" let &textwidth=exists('g:textColumns') && !empty(g:textColumns) ? g:textColumns : 80
+set nolinebreak
+
+set hlsearch
+set formatoptions+=or
+
+let &tabstop=exists('g:tabSize') ? g:tabSize : 2
+let &softtabstop=exists('g:tabSize') ? g:tabSize : 2
+let &shiftwidth=exists('g:tabSize') ? g:tabSize : 2
 set expandtab
-set smartindent
-filetype plugin indent on
-filetype plugin on
-
-
-" \ is the leader character
-let mapleader = ","
-
-
-
-let g:neocomplete#enable_at_startup = 1
-
-set guifont=Sauce\ Code\ Powerline:h13
-
-" ------------------------------------------------------------------
-" Solarized Colorscheme Config
-" ------------------------------------------------------------------
-let g:solarized_termcolors=256
-set background=dark
-colorscheme solarized
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-
-
-
-" +-----------------------------------------+
-" | Powerline Config                        |
-" +-----------------------------------------+
-source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
-set laststatus=2
-let g:Powerline_symbols = "fancy"
-let g:Powerline_theme = "solarized"
-let g:Powerline_colorscheme = "solarized"
-set noshowmode
-set encoding=utf-8
-set t_Co=256
-set fillchars+=stl:\ ,stlnc:\
-set termencoding=utf-8
-" +-----------------------------------------+
-" | End Powerline Config                    |
-" +-----------------------------------------+
-
-
-
-" (only complete to the longest unambiguous match, and show a menu)
-set completeopt=longest,menu
-set wildmode=list:longest,list:full
-set complete=.,t
-map Q gq
-" case only matters with mixed case expressions
 set ignorecase
-set smartcase
+set infercase
+let g:omni_syntax_ignorecase=1
+set wildmode=full
+set wildignore+=*/node_modules/**
+" Including this messes up fugitive in git mergetool:
+" set wildignore+=*/.git/*,*/.hg/*,*/.svn/*        " Linux/MacOSX
+set sm!  " show matching brace/paren
+set visualbell
+" Should avoid "Hit Enter" annoyingness (Does *not* work)
+" set shortmess+=filmnrxoOtT
 
-" Tags
-let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
-set tags=./tags;
+" Mac Support bootstrap
+set wildignore+=*.DS_Store
 
-let g:fuf_splitPathMatching=1
+" Remove ugly folds
+set nofoldenable
+" nofoldenable doesn't work in diff mode so do something similar
+set diffopt=filler,context:9999
 
-" +-----------------------------------------+
-" | Keyboard Mappings                       |
-" +-----------------------------------------+
+" ============= Configure as Privacy Plugin =========================
+" All sensitive data is not stored in your ~/.vimrc folder
+" Configure the spelling language and file.
+" ================================================================
+set spelllang=en
+set spellfile=$HOME/vim_spell/en.utf-8.add
+" UndoDir:
+let s:homeFolder = $HOME
+let s:undoDir = s:homeFolder . '/vimUndo'
+set undofile
+" " Create undo dir if needed - not in your dotVim folder! It should be local to
+" " your computer.
+if !isdirectory(s:undoDir)
+  call mkdir(s:undoDir)
+endif
+execute "set undodir=".s:undoDir
+" Since your file/folder history may show up in a git commit!
+let g:netrw_dirhistmax=0
+" ================================================================
 
-if has("user_commands")
-    command! -bang -nargs=? -complete=file E e<bang> <args>
-    command! -bang -nargs=? -complete=file W w<bang> <args>
-    command! -bang -nargs=? -complete=file Wq wq<bang> <args>
-    command! -bang -nargs=? -complete=file WQ wq<bang> <args>
-    command! -bang Wa wa<bang>
-    command! -bang WA wa<bang>
-    command! -bang Q q<bang>
-    command! -bang QA qa<bang>
-    command! -bang Qa qa<bang>
-  endif
-
-function! AppendModeline()
-  let l:modeline = printf(" vim: set ft=%d ts=%d sw=%d tw=%d %set :",
-        \ &filetype, &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
-  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
-  call append(line("^"), l:modeline)
-endfunction
-nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
-amenu Edit.Insert\ &modeline <C-\><C-N>ggOvim:ff=unix ts=4 ss=4<CR>vim60:fdm=marker<Esc>
-
-map <D-S-]> gt
-map <D-S-[> gT
-map <D-1> 1gt
-map <D-2> 2gt
-map <D-3> 3gt
-map <D-4> 4g
-map <D-5> 5gt
-map <D-6> 6gt
-map <D-7> 7gt
-map <D-8> 8gt
-map <D-9> 9gt
-map <D-0> :tablast<CR>
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-set go-=T
-
-" +-----------------------------------------+
-" | Folding and FileTypes                   |
-" +-----------------------------------------+
-set foldcolumn=2
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-vnoremap <Space> zf
-au BufNewFile,BufRead *.zsh setlocal filetype=zsh
-au BufNewFile,BufRead *.zsh-theme set syntax=zsh
-au BufNewFile,BufRead *.conf set syntax=sh
-au BufReadPre * setlocal foldmethod=indent
-au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+" =========================== FIX SHELL ==========================
+if &shell =~# 'fish$'
+    set shell=zsh
+endif
+" ================================================================
 
 
+" http://stackoverflow.com/questions/6852763/vim-quickfix-list-launch-files-in-new-tab
+set switchbuf+=usetab,newtab
+
+" A better diff link for macvim
+" alias mvimdiff="mvim -O  \"+windo set diff scrollbind scrollopt+=hor nowrap\""
+
+" All ObjC/C++ files are ObjCPP.
+" All snipets for ObjC are in ~/.vim/myUltiSnippets/objcpp.snippets
+au BufNewFile,BufRead *.cpp set filetype=objcpp
+au BufNewFile,BufRead *.h set filetype=objcpp
+au BufNewFile,BufRead *.m set filetype=objcpp
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" <temporary until neobundle stops asking to hit enter for more>
 if has("gui_macvim")
-	let macvim_hig_shift_movement = 1
-else
-  set term=xterm-256color
+  set guifont=Monaco:h10
+  set columns=195
+endif
+" </temporary until neobundle stops asking to hit enter for more>
+
+set t_Co=256
+
+source ~/.vim/.bundlesVimRc
+
+" <temporary until neobundle stops asking to hit enter for more>
+set linespace=0
+autocmd VimEnter * exec ":set columns=85"
+" </temporary until neobundle stops asking to hit enter for more>
+
+source ~/.vim/.guiSettingsVimRc   " Must come after .bundlesVimRc
+source ~/.vim/.keysVimRc
+source ~/.vim/.customFunctions.vim
+
+" sensible.vim disturbs this - reset it.
+set listchars = "eol:$"
+if filereadable(expand("~/.vim/vimrc.custom.after"))
+  source ~/.vim/vimrc.custom.after
 endif

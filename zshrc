@@ -7,7 +7,7 @@ export ZLE_RPROMPT_INDENT=0
 
 HIST_STAMPS="dd.mm.yyyy"
 
-plugins=(battery bundler brew brew-cask git git-extras git-flow git-prompt git-hubflow git-remote-branch brew install bower coffee brew-cask rails rake rbenv ruby gem cocoapods terminalapp urltools web-search themes wp-cli xcode gitfast last-working-dir marked2 node npm osxpip rails rake-fast sudo systemadmin systemmd parallels)
+plugins=(battery bundle bundler brew brew-cask brew install bower rails rake rbenv ruby gem cocoapods terminalapp urltools web-search themes wp-cli xcode node npm)
 
 source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:."
@@ -46,10 +46,5 @@ function install_powerline_precmd() {
 }
 
 install_powerline_precmd
+
 RPROMPT=""
-# A different powerline
-#function powerline_precmd()
-#{
-#   export PS1="$(~/.bin/powerline.js $?)"
-#}
-#precmd_functions=(powerline_precmd)
