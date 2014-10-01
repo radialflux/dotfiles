@@ -25,6 +25,8 @@ alias dots='cd ~/.dotfiles'
 alias sysconfigs="vi -O ~/Documents/Projects/sysconfigs.session"
 alias mdfind='mdfind -interpret $1'
 alias clear="osascript -e 'if application \"Terminal\" is frontmost then tell application \"System Events\" to keystroke \"k\" using command down'"
+alias tma='tmux attach -d -t'
+alias git-tmux='tmux new -s $(basename $(pwd))'
 
 export RBENV_ROOT=/usr/local/var/rbenv
 eval "$(rbenv init -)"

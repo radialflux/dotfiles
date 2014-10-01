@@ -3,6 +3,7 @@
 ---- 
 
 I have been through a few itterations of dotfiles.  None of them really seemed to meet my needs, so I started from scratch.
+I added ![VimBox](https://github.com/jordwalke/VimBox.git) & ![Powerline-Shell](https://github.com/milkbikis/powerline-shell.git) to the mix, pretty cool stuff once you get it trimmed to their liking.
 
 ### Requirements
 

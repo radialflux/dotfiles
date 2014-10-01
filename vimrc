@@ -121,9 +121,7 @@ let g:netrw_dirhistmax=0
 " ================================================================
 
 " =========================== FIX SHELL ==========================
-if &shell =~# 'fish$'
-    set shell=zsh
-endif
+set shell=zsh
 " ================================================================
 
 
@@ -146,19 +144,19 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " <temporary until neobundle stops asking to hit enter for more>
-if has("gui_macvim")
-  set guifont=Monaco:h10
-  set columns=195
-endif
+"if has("gui_macvim")
+"  set guifont=Monaco:h10
+"  set columns=195
+"endif
 " </temporary until neobundle stops asking to hit enter for more>
 
-set t_Co=256
+"set t_Co=256
 
 source ~/.vim/.bundlesVimRc
 
 " <temporary until neobundle stops asking to hit enter for more>
-set linespace=0
-autocmd VimEnter * exec ":set columns=85"
+"set linespace=0
+"autocmd VimEnter * exec ":set columns=85"
 " </temporary until neobundle stops asking to hit enter for more>
 
 source ~/.vim/.guiSettingsVimRc   " Must come after .bundlesVimRc
