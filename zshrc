@@ -12,6 +12,7 @@ plugins=(battery bundle bundler brew brew-cask brew install bower rails rake rbe
 source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:."
 export PATH="$PATH:$HOME/.bin"
+export PATH=$PATH:"/Applications/Android Studio.app/sdk/platform-tools:/Applications/Android Studio.app/sdk/tools"
 export ARCHFLAGS="-arch x86_64"
 export LANG=en_US.UTF-8
 export ARCHFLAGS="-arch x86_64"
@@ -20,7 +21,7 @@ alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias mvim="/Applications/MacVim.app/Contents/MacOS/Vim"
 alias zshconfig="mvim ~/.zshrc"
-alias dev="cd ~/Documents/Development"
+alias dev="cd ~/Development/$1"
 alias dots='cd ~/.dotfiles'
 alias sysconfigs="vi -O ~/Documents/Projects/sysconfigs.session"
 alias mdfind='mdfind -interpret $1'
