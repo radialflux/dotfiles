@@ -51,3 +51,4 @@ function install_powerline_precmd() {
 install_powerline_precmd
 
 RPROMPT=""
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

@@ -23,4 +23,4 @@ protocol = https
 [credential]
 	helper = osxkeychain
 [color]
-	ui = auto
+	ui = true
