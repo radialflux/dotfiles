@@ -11,8 +11,11 @@ plugins=(battery bundle bundler brew brew-cask brew install bower rails rake rbe
 
 source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:."
-export PATH="$PATH:$HOME/.bin"
-export PATH=$PATH:"/Applications/Android Studio.app/sdk/platform-tools:/Applications/Android Studio.app/sdk/tools"
+export PATH="$PATH:$HOME/bin"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export GOPATH=$HOME/Projects/go
+export PATH=$PATH:"/Applications/Android Studio.app/sdk/platform-tools:/Applications/Android Studio.app/sdk/tools:$GOPATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 export ARCHFLAGS="-arch x86_64"
 export LANG=en_US.UTF-8
 export ARCHFLAGS="-arch x86_64"
